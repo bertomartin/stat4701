@@ -1,3 +1,5 @@
+# This is a buy/sell classification algorithm developed by some coworkers
+
 import numpy as np
 from numpy import genfromtxt
 import pylab as pl

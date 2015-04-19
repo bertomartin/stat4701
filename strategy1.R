@@ -8,6 +8,7 @@ retVec=Delt(Op(SPY),Cl(SPY))
 
 #strategy
 binaryVec=lag(ifelse(Cl(SPY)>Op(SPY),1,0),1) #buy or stay out
+binaryVec[is.na(binaryVec)]=0
 
 #calculate returns.
 stratVec=retVec*binaryVec

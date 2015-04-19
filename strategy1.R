@@ -1,3 +1,6 @@
+require(quantmod)
+require(PerformanceAnalytics)
+
 ########### strategy 1 ########
 getSymbols("^GSPC", from = '2007/01/01')
 SPY <- GSPC['2007-01-01/']

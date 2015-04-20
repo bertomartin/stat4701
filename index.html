@@ -20,14 +20,21 @@ title: Home
 </div>
 
 <div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
+
+  <!-- newer: changed to < previous -->
   {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
+    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}"> &lt; Previous</a>
   {% else %}
-    <span class="pagination-item newer">Newer</span>
+    <span class="pagination-item newer">&lt; Previous</span>
   {% endif %}
+
+
+  <!-- older: changed to next > -->
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Next &gt;</a>
+  {% else %}
+    <span class="pagination-item older">Next &gt;</span>
+  {% endif %}
+
+
 </div>

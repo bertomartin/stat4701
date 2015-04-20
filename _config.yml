@@ -9,11 +9,12 @@ permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:               Poole
-tagline:             The Jekyll Butler
-url:                 http://getpoole.com
+title:               QuantTradr
+tagline:             Using R & Python to test trading strategies
+url:                 http://bertomartin.github.io
 paginate:            1
 baseurl:             "/stat4701"
+description:         QuantTradr is an initial exploration of the possibilites of backtesting strategies using R and Python. It was done for the Exploratory Visualization class at Columbia University.
 
 # Assets
 #

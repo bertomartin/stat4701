@@ -4,27 +4,21 @@ title: About
 ---
 
 <p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+  Quantradr is an exploration of using R & Python to build a backtesting system
+  for testing different strategies.
 </p>
 
-In the novel, *The Strange Case of Dr. Jekyll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+This was done for the *Exploratory Data Analysis and Visualization* class (stat
+4701) at Columbia University in the Spring of 2015 [link](http://stat4701.github.io/edav/).
 
-There are currently two themes built on Poole:
+## Who
+The team members that implemented this project are listed below: 
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+* Roberto Martin [@linkedin](https://www.linkedin.com/pub/roberto-martin/8/990/211){:target="_blank"}
+* Robert Piccone [@linkedin](https://www.linkedin.com){:target="_blank"}
+* Rohan [@linkedin](https://www.linkedin.com){:target="_blank"}
+* Elias Hussen [@linkedin](https://www.linkedin.com){:target="_blank"}
 
-Learn more and contribute on [GitHub](https://github.com/poole).
 
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
 
 Thanks for reading!

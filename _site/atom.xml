@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Poole</title>
- <link href="http://getpoole.com//atom.xml" rel="self"/>
- <link href="http://getpoole.com/"/>
- <updated>2015-04-19T21:48:06-04:00</updated>
- <id>http://getpoole.com</id>
+ <title>QuantTradr</title>
+ <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
+ <link href="http://bertomartin.github.io/"/>
+ <updated>2015-04-19T23:18:16-04:00</updated>
+ <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
    <email>markdotto@gmail.com</email>
@@ -13,57 +13,70 @@
 
  
  <entry>
-   <title>Introducing Poole</title>
-   <link href="http://getpoole.com///2014/01/02/introducing-poole/"/>
-   <updated>2014-01-02T00:00:00-05:00</updated>
-   <id>http://getpoole.com/2014/01/02/introducing-poole</id>
-   <content type="html">&lt;p&gt;&lt;em&gt;The Strange Case of Dr. Jekyll and Mr. Hyde&lt;/em&gt; tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel’s supporting cast is a man by the name of Mr. Poole, Dr. Jekyll’s loyal butler.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Poole is the butler for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;, the static site generator. It’s designed and developed by &lt;a href=&quot;https://twitter.com/mdo&quot;&gt;@mdo&lt;/a&gt; to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example templates, pages, posts, and styles.&lt;/p&gt;
-
-&lt;p&gt;There are currently two themes built on Poole:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://hyde.getpoole.com&quot;&gt;Hyde&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://lanyon.getpoole.com&quot;&gt;Lanyon&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Learn more and contribute on &lt;a href=&quot;https://github.com/poole&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;whats-included&quot;&gt;What’s included&lt;/h3&gt;
-
-&lt;p&gt;Poole is a streamlined Jekyll site designed and built as a foundation for building more meaningful themes. Poole, and every theme built on it, includes the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Complete Jekyll setup included (layouts, config, &lt;a href=&quot;/404.html&quot;&gt;404&lt;/a&gt;, &lt;a href=&quot;/atom.xml&quot;&gt;RSS feed&lt;/a&gt;, posts, and &lt;a href=&quot;/about&quot;&gt;example page&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Mobile friendly design and development&lt;/li&gt;
-  &lt;li&gt;Easily scalable text and component sizing with &lt;code&gt;rem&lt;/code&gt; units in the CSS&lt;/li&gt;
-  &lt;li&gt;Support for a wide gamut of HTML elements&lt;/li&gt;
-  &lt;li&gt;Related posts (time-based, because Jekyll) below each post&lt;/li&gt;
-  &lt;li&gt;Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Additional features are available in individual themes.&lt;/p&gt;
-
-&lt;h3 id=&quot;browser-support&quot;&gt;Browser support&lt;/h3&gt;
-
-&lt;p&gt;Poole and its themes are by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.&lt;/p&gt;
-
-&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
-
-&lt;p&gt;Poole is developed on and hosted with GitHub. Head to the &lt;a href=&quot;https://github.com/poole/poole&quot;&gt;GitHub repository&lt;/a&gt; for downloads, bug reports, and features requests.&lt;/p&gt;
-
-&lt;p&gt;Thanks!&lt;/p&gt;
+   <title>Introducing QuantTradr</title>
+   <link href="http://bertomartin.github.io///2015/04/18/introduction/"/>
+   <updated>2015-04-18T00:00:00-04:00</updated>
+   <id>http://bertomartin.github.io/2015/04/18/introduction</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  QuantTradr is a back testing framework for investigating trading strategies.
+  We will test various trading strategies particularly based on Technical
+  Analysis indicators, Twitter sentiments and Insider transactions.
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Backtesting Implementation</title>
+   <link href="http://bertomartin.github.io///2015/04/17/methodology/"/>
+   <updated>2015-04-17T00:00:00-04:00</updated>
+   <id>http://bertomartin.github.io/2015/04/17/methodology</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  We implement backtesting using the general process described below.
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Technical Strategies</title>
+   <link href="http://bertomartin.github.io///2015/04/16/technical-strategies/"/>
+   <updated>2015-04-16T00:00:00-04:00</updated>
+   <id>http://bertomartin.github.io/2015/04/16/technical-strategies</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  Below, we test some basic technical strategies using our developed back
+  testing framework.
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Insider Transactions Analysis</title>
+   <link href="http://bertomartin.github.io///2015/04/15/insider-transactions-analysis/"/>
+   <updated>2015-04-15T00:00:00-04:00</updated>
+   <id>http://bertomartin.github.io/2015/04/15/insider-transactions-analysis</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  Below, we investigate whether insider transactions can be used to make
+  predictions about future prices.
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sentiment Analysis</title>
+   <link href="http://bertomartin.github.io///2015/04/14/sentiment-analysis/"/>
+   <updated>2015-04-14T00:00:00-04:00</updated>
+   <id>http://bertomartin.github.io/2015/04/14/sentiment-analysis</id>
+   <content type="html">&lt;div class=&quot;message&quot;&gt;
+  We will use QuantTradr to investigate how sentiments from various news
+  sources can be used as a predictor for future prices.
+&lt;/div&gt;
 </content>
  </entry>
  
  <entry>
    <title>Example content</title>
-   <link href="http://getpoole.com///2014/01/01/example-content/"/>
+   <link href="http://bertomartin.github.io///2014/01/01/example-content/"/>
    <updated>2014-01-01T00:00:00-05:00</updated>
-   <id>http://getpoole.com/2014/01/01/example-content</id>
+   <id>http://bertomartin.github.io/2014/01/01/example-content</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
 &lt;/div&gt;
@@ -238,9 +251,9 @@
  
  <entry>
    <title>What's Jekyll?</title>
-   <link href="http://getpoole.com///2013/12/31/whats-jekyll/"/>
+   <link href="http://bertomartin.github.io///2013/12/31/whats-jekyll/"/>
    <updated>2013-12-31T00:00:00-05:00</updated>
-   <id>http://getpoole.com/2013/12/31/whats-jekyll</id>
+   <id>http://bertomartin.github.io/2013/12/31/whats-jekyll</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;

@@ -1,45 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
   <head>
-  <meta charset="UTF-8">
   <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
     
-      What's Jekyll? &middot; Poole
+      What's Jekyll? &middot; QuantTradr
     
   </title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
 
   <!-- RSS -->
-  <link rel="alternate" type="application/atom+xml" title="Poole" href="/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 </head>
 
 
-  <body>
+  <body class="sidebar-overlay">
 
-    <div class="container content">
-      <header class="masthead">
-        <h3 class="masthead-title">
-          <a href="/" title="Home">Poole</a>
-          <small>The Jekyll Butler</small>
-        </h3>
-      </header>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
-      <main>
-        <article class="post">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>QuantTradr is an initial exploration of the possibilites of backtesting strategies using R and Python. It was done for the Exploratory Visualization class at Columbia University.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+   <!-- <a class="sidebar-nav-item" href="https://github.com/poole/poole/archive/v1.0.0.zip">Stat 4701/Columbia</a>
+    <a class="sidebar-nav-item" href="https://github.com/poole/poole">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v1.0.0</span> -->
+  </nav>
+
+  <div class="sidebar-item">
+    Exploratory Data Visualization, Columbia University, Spring 2015. 
+    <a href="http://stat4701.github.io/edav/", target="_blank">Stat 4701</a>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2015. All lefts reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">QuantTradr</a>
+            <small>Using R & Python to test trading strategies</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
   <h1 class="post-title">What's Jekyll?</h1>
-  <time datetime="2013-12-31T00:00:00-05:00" class="post-date">31 Dec 2013</time>
+  <span class="post-date">31 Dec 2013</span>
   <p><a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/jekyll/jekyll/blob/master/README.markdown">the project’s readme</a>:</p>
 
 <blockquote>
@@ -48,41 +134,64 @@
 
 <p>It’s an immensely useful tool. Find out more by <a href="https://github.com/jekyll/jekyll">visiting the project on GitHub</a>.</p>
 
-</article>
+</div>
 
-<aside class="related">
+<div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
     
       <li>
         <h3>
-          <a href="//2014/01/02/introducing-poole/">
-            Introducing Poole
-            <small><time datetime="2014-01-02T00:00:00-05:00">02 Jan 2014</time></small>
+          <a href="/2015/04/18/introduction/">
+            Introducing QuantTradr
+            <small>18 Apr 2015</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="//2014/01/01/example-content/">
-            Example content
-            <small><time datetime="2014-01-01T00:00:00-05:00">01 Jan 2014</time></small>
+          <a href="/2015/04/17/methodology/">
+            Backtesting Implementation
+            <small>17 Apr 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/04/16/technical-strategies/">
+            Technical Strategies
+            <small>16 Apr 2015</small>
           </a>
         </h3>
       </li>
     
   </ul>
-</aside>
+</div>
 
-      </main>
-
-      <footer class="footer">
-        <small>
-          &copy; <time datetime="2015-04-19T21:48:06-04:00">2015</time>. All rights reserved.
-        </small>
-      </footer>
+      </div>
     </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
 
   </body>
 </html>

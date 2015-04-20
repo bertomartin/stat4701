@@ -33,7 +33,7 @@ head(SPY) #what does it look like?
     {% endhighlight %}
 
 * **Signal Definition**
-  - This is the kernel of the strategy you implement. This is where we define
+  - This is the kernel of the strategy we implement. This is where we define
     the rules of our strategy: when to buy and sell.
 {% highlight r %}
 sig=lag(ifelse(Cl(SPY)>Op(SPY),1,0),1) #buy only if close > open

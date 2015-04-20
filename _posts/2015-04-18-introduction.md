@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing QuantTradr 
+title: Introducing QuantTradR
 ---
 
 <div class="message">

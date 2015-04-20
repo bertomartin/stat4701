@@ -9,7 +9,7 @@ permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:               QuantTradr
+title:               QuantTradR
 tagline:             Using R & Python to test trading strategies
 url:                 http://bertomartin.github.io
 paginate:            1

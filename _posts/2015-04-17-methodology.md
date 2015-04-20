@@ -43,8 +43,8 @@ sig[is.na(sig)]=0 #cleanup
 * **Evaluate Returns using our strategy (aka Backtest)**
   - We now use the historical OHLC data and our signal to test how our strategy
     performs over a period of time. Analyzing the performance of our strategy as
-    compared to a benchmark is essential in deciding whether or not to select or
-    reject a strategy.
+    compared to a benchmark is essential in deciding whether or not to select a
+    strategy.
 {% highlight r %}
 # calculate strategy returns
 strategyReturns=spReturns*sig

@@ -148,6 +148,84 @@
   We implement backtesting using the general process described below.
 </div>
 
+<h3 id="process">Process</h3>
+<hr />
+<p>The process of backtesting includes a number of stages. We list and explain
+them below:</p>
+
+<ul>
+  <li><strong>Data Retrieval &amp; Munging</strong>
+    <ul>
+      <li>This was done using the tools <strong>xts</strong> &amp; <strong>quantmod</strong>. Stock market data are
+timeseries data and as such may pose peculiar challenges in analysis. Using
+quantmod eases the burden quite a bit. The data we get back using quantmod is
+wrapped as an xts object. XTS is a class that gives us additional tools for
+managing time series information. These include easy ways to <em>limit</em>,
+<em>select</em>, <em>filter</em> and <em>join</em> data by time periods.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">getSymbols<span class="p">(</span><span class="s">&quot;^GSPC&quot;</span><span class="p">)</span> <span class="c1">#getting data for the s&amp;p 500</span>
+SPY <span class="o">&lt;-</span> GSPC<span class="p">[</span><span class="s">&#39;2007-01-01::2013-06-19&#39;</span><span class="p">]</span> <span class="c1">#selecting period of xts obj</span>
+spReturns<span class="o">=</span>Delt<span class="p">(</span>Op<span class="p">(</span>SPY<span class="p">),</span>Cl<span class="p">(</span>SPY<span class="p">))</span> <span class="c1">#daily returns for the s&amp;p</span>
+<span class="kp">head</span><span class="p">(</span>SPY<span class="p">)</span> <span class="c1">#what does it look like?</span>
+               GSPC.Open GSPC.High GSPC.Low GSPC.Close GSPC.Volume
+  <span class="m">2007-01-03</span>   <span class="m">1418.03</span>   <span class="m">1429.42</span>  <span class="m">1407.86</span>    <span class="m">1416.60</span>  <span class="m">3429160000</span>
+  <span class="m">2007-01-04</span>   <span class="m">1416.60</span>   <span class="m">1421.84</span>  <span class="m">1408.43</span>    <span class="m">1418.34</span>  <span class="m">3004460000</span>
+  <span class="m">2007-01-05</span>   <span class="m">1418.34</span>   <span class="m">1418.34</span>  <span class="m">1405.75</span>    <span class="m">1409.71</span>  <span class="m">2919400000</span></code></pre></div>
+
+<ul>
+  <li><strong>Signal Definition</strong>
+    <ul>
+      <li>This is the kernel of the strategy you implement. This is where we define
+the rules of our strategy: when to buy and sell.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">sig<span class="o">=</span>lag<span class="p">(</span><span class="kp">ifelse</span><span class="p">(</span>Cl<span class="p">(</span>SPY<span class="p">)</span><span class="o">&gt;</span>Op<span class="p">(</span>SPY<span class="p">),</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="m">1</span><span class="p">)</span> <span class="c1">#buy only if close &gt; open</span>
+sig<span class="p">[</span><span class="kp">is.na</span><span class="p">(</span>sig<span class="p">)]</span><span class="o">=</span><span class="m">0</span> <span class="c1">#cleanup</span></code></pre></div>
+
+<ul>
+  <li><strong>Evaluate Returns using our strategy (aka Backtest)</strong>
+    <ul>
+      <li>We now use the historical OHLC data and our signal to test how our strategy
+performs over a period of time. Analyzing the performance of our strategy as
+compared to a benchmark is essential in deciding whether or not to select or
+reject a strategy.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># calculate strategy returns</span>
+strategyReturns<span class="o">=</span>spReturns<span class="o">*</span>sig
+
+<span class="c1">#chart returns</span>
+charts.PerformanceSummary<span class="p">(</span>strategyReturns<span class="p">)</span>
+
+<span class="c1">#chart combined returns</span>
+combinedReturns<span class="o">=</span><span class="kp">cbind</span><span class="p">(</span>spReturns<span class="p">,</span>strategyReturns<span class="p">)</span>
+charts.PerformanceSummary<span class="p">(</span>combinedReturns<span class="p">)</span>
+
+<span class="c1">#annualized sharpe ratio and standard deviation of s&amp;p</span>
+SharpeRatio.annualized<span class="p">(</span>strategyReturns<span class="p">,</span> scale<span class="o">=</span><span class="m">252</span><span class="p">)</span>
+sd.annualized<span class="p">(</span>strategyReturns<span class="p">,</span> scale<span class="o">=</span><span class="m">252</span><span class="p">)</span></code></pre></div>
+
+<ul>
+  <li><strong>Parameter Optimization</strong>
+    <ul>
+      <li>For any strategy, each parameter may assume multiple values. For example,
+in building a stragegy that is based on moving averages, how do we decide
+what is the optimal length of the moving average; or, what version of the
+moving average should we use (EMA or SMA).This is where parameter optimization comes
+in. It is actually a simple idea: test a number of different values for a
+given parameter (in our case, that parameter is moving average length), and
+optimize it for a value you care about, such as the Sharpe Ratio.</li>
+    </ul>
+  </li>
+</ul>
+
   </article>
   
 </div>

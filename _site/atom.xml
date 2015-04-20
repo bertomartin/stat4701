@@ -4,7 +4,7 @@
  <title>QuantTradr</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-20T00:32:19-04:00</updated>
+ <updated>2015-04-20T08:05:49-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -33,6 +33,84 @@
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   We implement backtesting using the general process described below.
 &lt;/div&gt;
+
+&lt;h3 id=&quot;process&quot;&gt;Process&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;The process of backtesting includes a number of stages. We list and explain
+them below:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Data Retrieval &amp;amp; Munging&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This was done using the tools &lt;strong&gt;xts&lt;/strong&gt; &amp;amp; &lt;strong&gt;quantmod&lt;/strong&gt;. Stock market data are
+timeseries data and as such may pose peculiar challenges in analysis. Using
+quantmod eases the burden quite a bit. The data we get back using quantmod is
+wrapped as an xts object. XTS is a class that gives us additional tools for
+managing time series information. These include easy ways to &lt;em&gt;limit&lt;/em&gt;,
+&lt;em&gt;select&lt;/em&gt;, &lt;em&gt;filter&lt;/em&gt; and &lt;em&gt;join&lt;/em&gt; data by time periods.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;getSymbols&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;^GSPC&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#getting data for the s&amp;amp;p 500&lt;/span&gt;
+SPY &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; GSPC&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;2007-01-01::2013-06-19&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#selecting period of xts obj&lt;/span&gt;
+spReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Delt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Op&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SPY&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;Cl&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SPY&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#daily returns for the s&amp;amp;p&lt;/span&gt;
+&lt;span class=&quot;kp&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SPY&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#what does it look like?&lt;/span&gt;
+               GSPC.Open GSPC.High GSPC.Low GSPC.Close GSPC.Volume
+  &lt;span class=&quot;m&quot;&gt;2007-01-03&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1418.03&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1429.42&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1407.86&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;1416.60&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;3429160000&lt;/span&gt;
+  &lt;span class=&quot;m&quot;&gt;2007-01-04&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1416.60&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1421.84&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1408.43&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;1418.34&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;3004460000&lt;/span&gt;
+  &lt;span class=&quot;m&quot;&gt;2007-01-05&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1418.34&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1418.34&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1405.75&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;1409.71&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;2919400000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Signal Definition&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This is the kernel of the strategy you implement. This is where we define
+the rules of our strategy: when to buy and sell.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;sig&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;lag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;ifelse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Cl&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SPY&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;Op&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SPY&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#buy only if close &amp;gt; open&lt;/span&gt;
+sig&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;is.na&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sig&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#cleanup&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Evaluate Returns using our strategy (aka Backtest)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;We now use the historical OHLC data and our signal to test how our strategy
+performs over a period of time. Analyzing the performance of our strategy as
+compared to a benchmark is essential in deciding whether or not to select or
+reject a strategy.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# calculate strategy returns&lt;/span&gt;
+strategyReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;spReturns&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;sig
+
+&lt;span class=&quot;c1&quot;&gt;#chart returns&lt;/span&gt;
+charts.PerformanceSummary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#chart combined returns&lt;/span&gt;
+combinedReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;cbind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;spReturns&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+charts.PerformanceSummary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;combinedReturns&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#annualized sharpe ratio and standard deviation of s&amp;amp;p&lt;/span&gt;
+SharpeRatio.annualized&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; scale&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;252&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+sd.annualized&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; scale&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;252&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Parameter Optimization&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;For any strategy, each parameter may assume multiple values. For example,
+in building a stragegy that is based on moving averages, how do we decide
+what is the optimal length of the moving average; or, what version of the
+moving average should we use (EMA or SMA).This is where parameter optimization comes
+in. It is actually a simple idea: test a number of different values for a
+given parameter (in our case, that parameter is moving average length), and
+optimize it for a value you care about, such as the Sharpe Ratio.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  

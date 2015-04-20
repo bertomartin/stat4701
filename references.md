@@ -13,3 +13,4 @@ title: References
 * [XTS talk](http://geektrader.me/2014/05/21/81/){:target="_blank"}
 * [Quintuitive](http://www.quintuitive.com/){:target="_blank"}
 * [Quintuitive, awesome gists](https://gist.github.com/ivannp){:target="_blank"}
+* [RSI2 Strategy, and more](http://stockcharts.com/school/doku.php?id=chart_school:trading_strategies:rsi2){:target="_blank"}

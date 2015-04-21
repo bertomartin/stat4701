@@ -2,14 +2,14 @@ library(quantmod)
 library(PerformanceAnalytics)
 
 #load my functions
-if(!exists("TradingStrategy", mode="function")) source("TradingStrategy.R") #strategy
-if(!exists("RunIterativeStrategy", mode="function")) source("RunIterativeStrategy.R") #strategy
-if(!exists("CalculatePerformanceMetric", mode="function")) source("strategyMetrics.R") #strategy
-if(!exists("PerformanceTable", mode="function")) source("strategyMetrics.R") #strategy
-if(!exists("OrderPerformanceTable", mode="function")) source("strategyMetrics.R") #strategy
-if(!exists("SelectTopNStrategies", mode="function")) source("strategyMetrics.R") #strategy
-if(!exists("FindOptimumStrategy", mode="function")) source("strategyMetrics.R") #strategy
-if(!exists("StrategyData", mode="function")) source("strategyData.R") #strategy
+if(!exists("StrategyData", mode="function")) source("strategyData.R") #get strategy data
+if(!exists("TradingStrategy", mode="function")) source("TradingStrategy.R") #define strategy
+if(!exists("RunIterativeStrategy", mode="function")) source("RunIterativeStrategy.R") #optimization code
+if(!exists("CalculatePerformanceMetric", mode="function")) source("strategyMetrics.R") #calculate performance
+if(!exists("PerformanceTable", mode="function")) source("strategyMetrics.R") #generate table of performance (1 row per strategy)
+if(!exists("OrderPerformanceTable", mode="function")) source("strategyMetrics.R") #order performance (best at top)
+if(!exists("SelectTopNStrategies", mode="function")) source("strategyMetrics.R") #select the best n performing strateies
+if(!exists("FindOptimumStrategy", mode="function")) source("strategyMetrics.R") #plot top strategies against each other and print performance table
 
 
 nameOfStrategy <- "GSPC Moving Average Strategy"
@@ -30,7 +30,7 @@ colnames(indexReturns) <- "GSPC Buy & Hold"
 pTab <- FindOptimumStrategy(trainingData) #performance table of each strategy
 
 #test: TODO select top strategy and test against benchmark
-dev.new()
+dev.new() #doesn't work in rstudio
 #manually specify a strategy
 outofSampleReturns <- TradingStrategy(testData, mavga_period=9, mavgb_period=6)
 finalReturns <- cbind(outofSampleReturns, indexReturns)

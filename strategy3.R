@@ -23,8 +23,8 @@ getSymbols("^GSPC") #getting data for the s&p 500
 SPY <- GSPC['2007-01-01::2013-06-19']
 
 #2-Calculate the 200-Day SMAs:
-smaHi200=SMA(Hi(SPY),82)
-smaLo200=SMA(Lo(SPY),82)
+smaHi200=SMA(Hi(SPY),200)
+smaLo200=SMA(Lo(SPY),200)
 
 #3-Calculate the lagged trading signal vector:
 binVec=lag(ifelse(Cl(SPY)>smaHi200,1,0)+ifelse(Cl(SPY)<smaLo200,-1,0),1)
@@ -42,8 +42,8 @@ stratRets=binVec*rets
 charts.PerformanceSummary(stratRets)
 
 #table of strategy performance
-Performance(stratRets)
-Performance(rets)
+combinedReturns3=cbind(rets,stratRets)
+charts.PerformanceSummary(combinedReturns3)
 
 
 

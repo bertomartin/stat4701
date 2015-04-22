@@ -26,15 +26,21 @@ title: Sentiment Analysis
 ![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
+
 ## Using News to Predict trends ##
 
+
+
 ![uk oil co]({{site.baseurl}}/images/uk_oil.png)
+
+
 
 ![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
 
 
 ##Resources for Analysis##
+
 
 * Twitter - @Yahoonews,@googlenews,@Yahoofinance,@ftfinancialtimes,@cnnmoney,@cnbcfastmoney,#Apple,$AAPL
 * Google trends
@@ -119,7 +125,9 @@ apple_yahoonewstext=str_replace_all(apple_yahoonewstext_apr21,"[^[:graph:]]", " 
 
 
 ##List of positive Worrds and negative words ##
+
 hu.liu.pos = scan('~/Documents/STAT4701/sentimentanalysis/opinion-lexicon-English/positive_words.txt', what='character', comment.char=';')
+
 hu.liu.neg = scan('~/Documents/STAT4701/sentimentanalysis/opinion-lexicon-English/negative_words.txt', what='character', comment.char=';')
 
 
@@ -155,9 +163,11 @@ This might give us data for over a month.
 ![Seeking_alpha]({{site.baseurl}}/images/AAPL_stock_seekingalpha.png)
 
 
+
+
 ## Predicting Stock Market trends using Google Trends Data ##
 
-Google Trends gives us interest score on a scale of 1 - 100 through Google Searches.Below is data for the term AAPL for year 2015.
+Google Trends gives us interest score on a scale of 1 - 100 through Google Searches.Below is data for the term AAPL for year Jan to April 2015.
 
 Week | AAPL Score
 -----| -----

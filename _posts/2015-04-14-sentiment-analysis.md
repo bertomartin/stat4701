@@ -22,15 +22,15 @@ title: Sentiment Analysis
 
 ##Twitter mood predicts the stock market##
 
-![twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png)
 
+![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
 ## Using News to Predict trends ##
 
-![uk oil co](Users/rob2056/Desktop/uk_oil.png)
+![uk oil co]({{site.baseurl}}/images/uk_oil.png)
 
-![twitter stock rises](Users/rob2056/Desktop/google_twitter.png)
+![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
 
 ##Resources ##

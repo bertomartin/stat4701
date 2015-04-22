@@ -48,9 +48,9 @@ SelectTopNStrategies <- function(returns, performanceTable, metric,n){
 
 #find best strategy
 FindOptimumStrategy <- function(trainingData){
-  trainingReturns <- RunIterativeStrategy(trainingData, 5, 5)
+  trainingReturns <- RunIterativeStrategy(trainingData, 50, 200)
   pTab <- PerformanceTable(trainingReturns)
-  topTrainingReturns <- SelectTopNStrategies(trainingReturns, pTab, "SharpeRatio", 5)
+  topTrainingReturns <- SelectTopNStrategies(trainingReturns, pTab, "SharpeRatio", 3)
   charts.PerformanceSummary(topTrainingReturns, main=paste(nameOfStrategy, "- Training"), geometric=FALSE)
   return(pTab)
 }

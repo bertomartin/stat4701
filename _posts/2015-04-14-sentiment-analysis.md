@@ -22,15 +22,15 @@ title: Sentiment Analysis
 
 ##Twitter mood predicts the stock market##
 
-![twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png)
 
+![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
 ## Using News to Predict trends ##
 
-![uk oil co](Users/rob2056/Desktop/uk_oil.png)
+![uk oil co]({{site.baseurl}}/images/uk_oil.png)
 
-![twitter stock rises](Users/rob2056/Desktop/google_twitter.png)
+![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
 
 ##Resources ##
@@ -129,13 +129,13 @@ p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))
 p + geom_line()
 
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/yahoofinance_apr21.png)
 
+![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
 
 ## lets see the AAPL stock during this time ##
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/AAPL_yahoofinance.png)
+![AAPL_yahoofinance]({{site.baseurl}}/images/Final_Project/AAPL_yahoofinance.png)
 
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
 This might give us data for over a month.
@@ -150,7 +150,46 @@ This might give us data for over a month.
 ![Seeking_alpha]({{site.baseurl}}/images/AAPL_stock_seekingalpha.png)
 
 
+## Predicting Stock Market trends using Google Trends Data ##
+
+Google Trends gives us interest score on a scale of 1 - 100 through Google Searches.Below is data for the term AAPL for year 2015.
+
+Week | AAPL Score
+-----| -----
+01/04/15|	35
+01/11/15|	32
+01/18/15|	31
+01/25/15|	81
+02/01/15|	40
+02/08/15|	50
+02/15/15|	42
+02/22/15|	48
+03/01/15|	42
+03/08/15|	55
+03/15/15|	39
+03/22/15|	34
+03/29/15|	31
+04/05/15|	35
+04/12/15|	36
+04/19/15|	32
+
+![gtrends_2015]({{site.baseurl}}/images/gtrends_2015.png)
 
 
+And the AAPL Stock volume for the same period
+
+![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2015.png)
+
+
+We can clearly see a correlation between the AAPL stock volume and the google trends interest score for AAPL.
+
+
+
+##AAPL stock volume vs AAPL score(Google trends) - 2014 ##
+
+
+![gtrends_2015]({{site.baseurl}}/images/gtrends_2014.png)
+
+![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2014.png)
 
 

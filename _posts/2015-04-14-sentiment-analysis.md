@@ -24,6 +24,6 @@ title: Sentiment Analysis
 
 
 
-[twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png?raw=true)
+[twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png)
 
 

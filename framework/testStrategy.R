@@ -12,16 +12,16 @@ if(!exists("SelectTopNStrategies", mode="function")) source("strategyMetrics.R")
 if(!exists("FindOptimumStrategy", mode="function")) source("strategyMetrics.R") #plot top strategies against each other and print performance table
 
 
-nameOfStrategy <- "GSPC Moving Average Strategy"
+nameOfStrategy <- "AAPL Moving Average Strategy"
 
 #specify dates
-trainingStartDate <- as.Date("2000-01-01")
-trainingEndDate <- as.Date("2010-01-01")
-outofSampleStartDate <- as.Date("2010-01-02")
+trainingStartDate <- as.Date("2007-01-01")
+trainingEndDate <- as.Date("2013-06-19")
+outofSampleStartDate <- as.Date("2013-06-20")
 
 #1. Get Data
-trainingData = StrategyData("GSPC", trainingStartDate, trainingEndDate, outofSampleStartDate)$trainingData
-testData <- StrategyData("GSPC", trainingStartDate, trainingEndDate, outofSampleStartDate)$testData
+trainingData = StrategyData("AAPL", trainingStartDate, trainingEndDate, outofSampleStartDate)$trainingData
+testData <- StrategyData("AAPL", trainingStartDate, trainingEndDate, outofSampleStartDate)$testData
 
 #index returns
 indexReturns <- Delt(Cl(window(stockData$GSPC, start = outofSampleStartDate))) #calculate returns for out of sample
@@ -32,6 +32,6 @@ pTab <- FindOptimumStrategy(trainingData) #performance table of each strategy
 #test: TODO select top strategy and test against benchmark
 dev.new() #doesn't work in rstudio
 #manually specify a strategy
-outofSampleReturns <- TradingStrategy(testData, mavga_period=9, mavgb_period=6)
+outofSampleReturns <- TradingStrategy(testData, mavga_period=2, mavgb_period=5)
 finalReturns <- cbind(outofSampleReturns, indexReturns)
 charts.PerformanceSummary(finalReturns, main=paste(nameOfStrategy, "- Out of Sample"), geometric=FALSE)

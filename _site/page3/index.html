@@ -200,8 +200,24 @@ strategyReturns<span class="o">=</span>signal<span class="o">*</span>buyAndHold
 <span class="c1">#charts.PerformanceSummary(cbind(rets,stratRets))</span>
 charts.PerformanceSummary<span class="p">(</span>strategyReturns<span class="p">,</span> geometric<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span></code></pre></div>
 
-<h2 id="results">Results</h2>
+<h2 id="resultsperformance">Results/Performance</h2>
 <p><img src="/images/aapl_strategy1.png" alt="Strategy Graph" /></p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">SharpeRatio.annualized<span class="p">(</span>combinedReturns3<span class="p">,</span> scale<span class="o">=</span><span class="m">252</span><span class="p">)</span>
+                                AAPL.Buy...Hold X200dma.Strategy
+Annualized Sharpe Ratio <span class="p">(</span>Rf<span class="o">=</span><span class="m">0</span>%<span class="p">)</span>       <span class="m">0.5496045</span>        <span class="m">0.5995742</span>
+
+
+Return.cumulative<span class="p">(</span>combinedReturns3<span class="p">)</span>
+                  AAPL.Buy...Hold X200dma.Strategy
+Cumulative Return        <span class="m">2.301742</span>         <span class="m">2.361772</span></code></pre></div>
+
+<hr />
+
+<h1 id="strategy-2-introducing-the-framework--parameter-optimization">Strategy 2: Introducing the framework &amp; parameter optimization</h1>
+<p>Lets see whether we can improve our strategy.
+<img src="/images/aapl_sma50_200.png" alt="Strategy Graph" /></p>
+
 
   </article>
   

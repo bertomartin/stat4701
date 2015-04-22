@@ -4,7 +4,7 @@
  <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-22T01:37:13-04:00</updated>
+ <updated>2015-04-22T02:23:23-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -226,8 +226,24 @@ strategyReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;signal&lt;span clas
 &lt;span class=&quot;c1&quot;&gt;#charts.PerformanceSummary(cbind(rets,stratRets))&lt;/span&gt;
 charts.PerformanceSummary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; geometric&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;h2 id=&quot;resultsperformance&quot;&gt;Results/Performance&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/images/aapl_strategy1.png&quot; alt=&quot;Strategy Graph&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;SharpeRatio.annualized&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;combinedReturns3&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; scale&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;252&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                AAPL.Buy...Hold X200dma.Strategy
+Annualized Sharpe Ratio &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Rf&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;%&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;       &lt;span class=&quot;m&quot;&gt;0.5496045&lt;/span&gt;        &lt;span class=&quot;m&quot;&gt;0.5995742&lt;/span&gt;
+
+
+Return.cumulative&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;combinedReturns3&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                  AAPL.Buy...Hold X200dma.Strategy
+Cumulative Return        &lt;span class=&quot;m&quot;&gt;2.301742&lt;/span&gt;         &lt;span class=&quot;m&quot;&gt;2.361772&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;strategy-2-introducing-the-framework--parameter-optimization&quot;&gt;Strategy 2: Introducing the framework &amp;amp; parameter optimization&lt;/h1&gt;
+&lt;p&gt;Lets see whether we can improve our strategy.
+&lt;img src=&quot;/images/aapl_sma50_200.png&quot; alt=&quot;Strategy Graph&quot; /&gt;&lt;/p&gt;
+
 </content>
  </entry>
  

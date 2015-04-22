@@ -61,5 +61,24 @@ charts.PerformanceSummary(strategyReturns, geometric=FALSE)
 
 {% endhighlight %}
 
-## Results
+## Results/Performance
 ![Strategy Graph]({{site.baseurl}}/images/aapl_strategy1.png)
+
+{% highlight r %}
+SharpeRatio.annualized(combinedReturns3, scale=252)
+                                AAPL.Buy...Hold X200dma.Strategy
+Annualized Sharpe Ratio (Rf=0%)       0.5496045        0.5995742
+
+
+Return.cumulative(combinedReturns3)
+                  AAPL.Buy...Hold X200dma.Strategy
+Cumulative Return        2.301742         2.361772
+{% endhighlight %}
+
+***
+
+# Strategy 2: Introducing the framework & parameter optimization
+Lets see whether we can improve our strategy.
+![Strategy Graph]({{site.baseurl}}/images/aapl_sma50_200.png)
+
+

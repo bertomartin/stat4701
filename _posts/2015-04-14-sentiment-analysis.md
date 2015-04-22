@@ -84,7 +84,7 @@ apple_yahoonewstext = sapply(apple_yahoonewstweets_apr21, function(x) x$getText(
 ## Clean the data ##
 apple_yahoonewstext=str_replace_all(apple_yahoonewstext_apr21,"[^[:graph:]]", " ")
 
- ##Calculate the Sentiment Score##
+ ## Calculate the Sentiment Score ##
  
  scoreCorpus <- function(text, pos, neg) {
   corpus <- Corpus(VectorSource(text)) 
@@ -217,4 +217,8 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 ![Amazon_stock_2014]({{site.baseurl}}/images/Amazon_stock_2014.png)
 
 
+
+## Maybe More ... Predicting Sales ?? ##
+
+![Iphone_samsung]({{site.baseurl}}/images/iphone_samsung_gtrends.png)
 

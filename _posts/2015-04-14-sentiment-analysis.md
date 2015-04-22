@@ -138,3 +138,15 @@ p + geom_line()
 ![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/AAPL_yahoofinance.png)
 
 
+
+
+## Similarly, we analyzed the tweets of @SAlphaAAPL##
+![uk oil co](/images/seeking_alphaAAPL_correlates_volume.png)
+
+##AAPL stock Volume during this time ##
+
+
+
+
+
+

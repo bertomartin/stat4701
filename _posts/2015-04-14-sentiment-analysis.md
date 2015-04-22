@@ -141,8 +141,8 @@ p + geom_line()
 
 
 ## Similarly, we analyzed the tweets of @SAlphaAAPL##
-![uk oil co](/images/seeking_alphaAAPL_correlates_volume.png)
 
+({{site.baseurl}}/images/seeking_alphaAAPL_correlates_volume.png)
 ##AAPL stock Volume during this time ##
 
 

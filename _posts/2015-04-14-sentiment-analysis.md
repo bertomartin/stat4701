@@ -143,7 +143,10 @@ p + geom_line()
 ## Similarly, we analyzed the tweets of @SAlphaAAPL##
 
 ![Seeking_alpha]({{site.baseurl}}/images/seeking_alphaAAPL_correlates_volume.png)
+
 ##AAPL stock Volume during this time ##
+
+![Seeking_alpha]({{site.baseurl}}/images/AAPL_stock_seekingalpha.png)
 
 
 

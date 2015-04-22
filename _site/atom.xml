@@ -4,7 +4,7 @@
  <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-21T23:48:56-04:00</updated>
+ <updated>2015-04-22T00:32:23-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -166,7 +166,7 @@ optimize it for a value you care about, such as the Sharpe Ratio.&lt;/li&gt;
  </entry>
  
  <entry>
-   <title>Technical Strategies</title>
+   <title>Technical Strategies & Analytical Framework</title>
    <link href="http://bertomartin.github.io///2015/04/16/technical-strategies/"/>
    <updated>2015-04-16T00:00:00-04:00</updated>
    <id>http://bertomartin.github.io/2015/04/16/technical-strategies</id>
@@ -175,7 +175,30 @@ optimize it for a value you care about, such as the Sharpe Ratio.&lt;/li&gt;
   testing framework.
 &lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bertomartin/stat4701/tree/master/framework&quot; target=&quot;_blank&quot;&gt;The strategy framework&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;technical-analysis&quot;&gt;Technical Analysis&lt;/h1&gt;
+
+&lt;p&gt;Technical strategies are derived from technical analysis (TA). Tehnical
+analysis usually comes down to using past price to predict the future price
+actions of a stock. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;One major benefit of using technical analysis is that it
+can be applied to securites of any type, whether that is currencies,
+commodities, futures, or equities. &lt;/li&gt;
+  &lt;li&gt;The major drawback is that it is a lagging
+indicator, and you will usually be late to the party (but in many cases, you
+can still enjoy it).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are a lot of technical analysis indicators. A list of them can be seen
+here:
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Technical_analysis#Charting_terms_and_indicators&quot;&gt;wikipedia link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In coming up with your trading strategy, you may use one or more of the
+technical analysis tools.&lt;/p&gt;
+
+&lt;h4 id=&quot;strategy-1&quot;&gt;Strategy 1:&lt;/h4&gt;
+
 </content>
  </entry>
  

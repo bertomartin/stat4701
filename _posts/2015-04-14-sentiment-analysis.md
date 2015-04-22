@@ -46,7 +46,7 @@ title: Sentiment Analysis
 * Google trends
 * Yahoo News,Google News, Yahoo Finance, Seeking Alpha
 
-{% highlight text %}
+{% highlight r %}
 ##Libraries used##
 
 library(tm)

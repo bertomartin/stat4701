@@ -24,6 +24,6 @@ title: Sentiment Analysis
 
 
 
-!(Users/rob2056/Desktop/twittermood.png)
+! [twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png)
 
 

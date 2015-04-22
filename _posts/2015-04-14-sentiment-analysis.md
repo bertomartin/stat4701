@@ -137,7 +137,8 @@ p + geom_line()
 
 ![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/AAPL_yahoofinance.png)
 
-
+The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
+This might give us data for over a month.
 
 
 ## Similarly, we analyzed the tweets of @SAlphaAAPL##

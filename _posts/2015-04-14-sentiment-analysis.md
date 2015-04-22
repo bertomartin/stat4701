@@ -20,7 +20,7 @@ title: Sentiment Analysis
 * First move in S&P Futures caused by bin Laden's death occurred 4 minutes before Bloomberg reported news.
 
 
-##Twitter mood predicts the stock market##
+##Twitter for stock market##
 
 
 ![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
@@ -33,7 +33,8 @@ title: Sentiment Analysis
 ![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
 
-##Resources ##
+
+##Resources for Analysis##
 
 * Twitter - @Yahoonews,@googlenews,@Yahoofinance,@ftfinancialtimes,@cnnmoney,@cnbcfastmoney,#Apple,$AAPL
 * Google trends
@@ -42,9 +43,13 @@ title: Sentiment Analysis
 
 ##Libraries used##
 library(tm)
+
 library(tm.plugin.webmining)
+
 library(slam)
+
 library(twitteR)
+
 library(stringr)
 
 ## Extract the tweets using @YahooFinance
@@ -135,7 +140,7 @@ p + geom_line()
 
 ## lets see the AAPL stock during this time ##
 
-![AAPL_yahoofinance]({{site.baseurl}}/images/Final_Project/AAPL_yahoofinance.png)
+![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
 This might give us data for over a month.
@@ -191,5 +196,7 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 ![gtrends_2015]({{site.baseurl}}/images/gtrends_2014.png)
 
 ![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2014.png)
+
+
 
 

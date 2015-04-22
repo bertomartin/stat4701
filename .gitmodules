@@ -1,0 +1,3 @@
+[submodule "market_sentimentalism"]
+	path = market_sentimentalism
+	url = https://github.com/EHDEV/market_sentimentalism.git

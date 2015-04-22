@@ -11,7 +11,7 @@
 
   <title>
     
-      QuantTradr &middot; Using R & Python to test trading strategies
+      QuantTradR &middot; Using R & Python to test trading strategies
     
   </title>
 
@@ -126,7 +126,7 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">QuantTradr</a>
+            <a href="/" title="Home">QuantTradR</a>
             <small>Using R & Python to test trading strategies</small>
           </h3>
         </div>
@@ -138,7 +138,7 @@
   <article class="post">
     <h1 class="post-title">
       <a href="/2015/04/16/technical-strategies/">
-        Technical Strategies
+        Technical Strategies & Analytical Framework
       </a>
     </h1>
 
@@ -148,6 +148,143 @@
   Below, we test some basic technical strategies using our developed back
   testing framework.
 </div>
+
+<h1 id="technical-analysis">Technical Analysis</h1>
+
+<p>Technical strategies are derived from technical analysis (TA). Tehnical
+analysis usually comes down to using past price to predict the future price
+actions of a stock. </p>
+
+<ul>
+  <li>One major benefit of using technical analysis is that it
+can be applied to securites of any type, whether that is currencies,
+commodities, futures, or equities. </li>
+  <li>The major drawback is that it is a lagging
+indicator, and you will usually be late to the party (but in many cases, you
+can still enjoy it).</li>
+</ul>
+
+<p>There are a lot of technical analysis indicators. A list of them can be seen
+here:
+<a href="http://en.wikipedia.org/wiki/Technical_analysis#Charting_terms_and_indicators">wikipedia link</a></p>
+
+<p>In coming up with your trading strategy, you may use one or more of the
+technical analysis tools.</p>
+
+<p><strong>Strategy 1</strong>: <em>Buy APPL when it goes above 200dma, sell when it goes below</em></p>
+
+<p><img src="/images/aapl_sma200.png" alt="Strategy Graph" /></p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#1-get data</span>
+getSymbols<span class="p">(</span><span class="s">&quot;AAPL&quot;</span><span class="p">)</span> <span class="c1">#getting data for the aapl</span>
+AAPL <span class="o">&lt;-</span> AAPL<span class="p">[</span><span class="s">&#39;2007-01-01::2013-06-19&#39;</span><span class="p">]</span>
+
+<span class="c1">#2-Calculate the 200-Day SMAs:</span>
+smahi200<span class="o">=</span>SMA<span class="p">(</span>Hi<span class="p">(</span>AAPL<span class="p">),</span><span class="m">200</span><span class="p">)</span>
+smaLo200<span class="o">=</span>SMA<span class="p">(</span>Lo<span class="p">(</span>AAPL<span class="p">),</span><span class="m">200</span><span class="p">)</span>
+
+<span class="c1">#3-Calculate the lagged trading signal vector:</span>
+signal<span class="o">=</span>lag<span class="p">(</span><span class="kp">ifelse</span><span class="p">(</span>Cl<span class="p">(</span>AAPL<span class="p">)</span><span class="o">&gt;</span>smaHi200<span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span><span class="o">+</span><span class="kp">ifelse</span><span class="p">(</span>Cl<span class="p">(</span>AAPL<span class="p">)</span><span class="o">&lt;</span>smaLo200<span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">#clean up NAs</span>
+signal<span class="p">[</span><span class="kp">is.na</span><span class="p">(</span>signal<span class="p">)]</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1">#calculate daily returns vector</span>
+buyAndHold<span class="o">=</span><span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>Ad<span class="p">(</span>AAPL<span class="p">)))</span> <span class="c1">#subtract yesterday from today</span>
+<span class="kp">colnames</span><span class="p">(</span>buyAndHold<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;AAPL Buy &amp; Hold&quot;</span>
+
+<span class="c1">#calculate strategy returns</span>
+strategyReturns<span class="o">=</span>signal<span class="o">*</span>buyAndHold
+<span class="kp">colnames</span><span class="p">(</span>strategyReturns<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;200dma Strategy&quot;</span>
+
+<span class="c1">#charts.PerformanceSummary(cbind(rets,stratRets))</span>
+charts.PerformanceSummary<span class="p">(</span>strategyReturns<span class="p">,</span> geometric<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span></code></pre></div>
+
+<h2 id="resultsperformance">Results/Performance</h2>
+<p><img src="/images/aapl_strategy1.png" alt="Strategy Graph" /></p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r">SharpeRatio.annualized<span class="p">(</span>combinedReturns3<span class="p">,</span> scale<span class="o">=</span><span class="m">252</span><span class="p">)</span>
+                                AAPL.Buy...Hold X200dma.Strategy
+Annualized Sharpe Ratio <span class="p">(</span>Rf<span class="o">=</span><span class="m">0</span>%<span class="p">)</span>       <span class="m">0.5496045</span>        <span class="m">0.5995742</span>
+
+
+Return.cumulative<span class="p">(</span>combinedReturns3<span class="p">)</span>
+                  AAPL.Buy...Hold X200dma.Strategy
+Cumulative Return        <span class="m">2.301742</span>         <span class="m">2.361772</span></code></pre></div>
+
+<hr />
+
+<h1 id="strategy-2-introducing-the-framework--parameter-optimization">Strategy 2: Introducing the framework &amp; parameter optimization</h1>
+<p>Lets see whether we can improve our strategy.
+<img src="/images/aapl_sma50_200.png" alt="Strategy Graph" /></p>
+
+<p><strong>Framework</strong></p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="kn">library</span><span class="p">(</span>quantmod<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>PerformanceAnalytics<span class="p">)</span>
+
+<span class="c1">#load my functions</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;StrategyData&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyData.R&quot;</span><span class="p">)</span> <span class="c1">#get strategy data</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;TradingStrategy&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;TradingStrategy.R&quot;</span><span class="p">)</span> <span class="c1">#define strategy</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;RunIterativeStrategy&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;RunIterativeStrategy.R&quot;</span><span class="p">)</span> <span class="c1">#optimization code</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;CalculatePerformanceMetric&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyMetrics.R&quot;</span><span class="p">)</span> <span class="c1">#calculate performance</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;PerformanceTable&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyMetrics.R&quot;</span><span class="p">)</span> <span class="c1">#generate table of performance (1 row per strategy)</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;OrderPerformanceTable&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyMetrics.R&quot;</span><span class="p">)</span> <span class="c1">#order performance (best at top)</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;SelectTopNStrategies&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyMetrics.R&quot;</span><span class="p">)</span> <span class="c1">#select the best n performing strateies</span>
+<span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="kp">exists</span><span class="p">(</span><span class="s">&quot;FindOptimumStrategy&quot;</span><span class="p">,</span> mode<span class="o">=</span><span class="s">&quot;function&quot;</span><span class="p">))</span> <span class="kn">source</span><span class="p">(</span><span class="s">&quot;strategyMetrics.R&quot;</span><span class="p">)</span> <span class="c1">#plot top strategies against each other and print performance table</span>
+
+
+nameOfStrategy <span class="o">&lt;-</span> <span class="s">&quot;AAPL Moving Average Strategy&quot;</span>
+
+<span class="c1">#specify dates</span>
+trainingStartDate <span class="o">&lt;-</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2007-01-01&quot;</span><span class="p">)</span>
+trainingEndDate <span class="o">&lt;-</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2012-06-19&quot;</span><span class="p">)</span>
+outofSampleStartDate <span class="o">&lt;-</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2012-06-20&quot;</span><span class="p">)</span>
+outofSampleEndDate <span class="o">&lt;-</span> <span class="kp">as.Date</span><span class="p">(</span><span class="s">&quot;2014-01-01&quot;</span><span class="p">)</span>
+
+<span class="c1">#1. Get Data</span>
+trainingData <span class="o">=</span> StrategyData<span class="p">(</span><span class="s">&quot;AAPL&quot;</span><span class="p">,</span> trainingStartDate<span class="p">,</span> trainingEndDate<span class="p">,</span> outofSampleStartDate<span class="p">,</span> outofSampleEndDate<span class="p">)</span><span class="o">$</span>trainingData
+testData <span class="o">&lt;-</span> StrategyData<span class="p">(</span><span class="s">&quot;AAPL&quot;</span><span class="p">,</span> trainingStartDate<span class="p">,</span> trainingEndDate<span class="p">,</span> outofSampleStartDate<span class="p">,</span> outofSampleEndDate<span class="p">)</span><span class="o">$</span>testData
+
+<span class="c1">#index returns</span>
+indexReturns <span class="o">&lt;-</span> Delt<span class="p">(</span>Cl<span class="p">(</span>window<span class="p">(</span>stockData<span class="o">$</span>AAPL<span class="p">,</span> start <span class="o">=</span> outofSampleStartDate<span class="p">,</span> end <span class="o">=</span> outofSampleEndDate<span class="p">)))</span> <span class="c1">#calculate returns for out of sample</span>
+<span class="kp">colnames</span><span class="p">(</span>indexReturns<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;AAPL Buy &amp; Hold&quot;</span>
+
+pTab <span class="o">&lt;-</span> FindOptimumStrategy<span class="p">(</span>trainingData<span class="p">)</span> <span class="c1">#performance table of each strategy</span>
+
+<span class="c1">#test: TODO select top strategy and test against benchmark</span>
+dev.new<span class="p">()</span> <span class="c1">#doesn&#39;t work in rstudio</span>
+<span class="c1">#manually specify a strategy</span>
+outofSampleReturns <span class="o">&lt;-</span> TradingStrategy<span class="p">(</span>testData<span class="p">,</span> mavga_period<span class="o">=</span><span class="m">11</span><span class="p">,</span> mavgb_period<span class="o">=</span><span class="m">24</span><span class="p">)</span>
+finalReturns <span class="o">&lt;-</span> <span class="kp">cbind</span><span class="p">(</span>outofSampleReturns<span class="p">,</span> indexReturns<span class="p">)</span>
+charts.PerformanceSummary<span class="p">(</span>finalReturns<span class="p">,</span> main<span class="o">=</span><span class="kp">paste</span><span class="p">(</span>nameOfStrategy<span class="p">,</span> <span class="s">&quot;- Out of Sample&quot;</span><span class="p">),</span> geometric<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span></code></pre></div>
+
+<p><em>the files are in the repository here:</em><a href="https://github.com/bertomartin/stat4701/tree/master/framework" target="_blank">framework</a></p>
+
+<h3 id="resultsperformance-1">Results/Performance</h3>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Calculating Performance Metric:  colSums&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Calculating Performance Metric:  SharpeRatio.annualized&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Calculating Performance Metric:  maxDrawdown&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Calculating Performance Metric:  sd.annualized&quot;</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="s">&quot;Performance Table&quot;</span>
+                   Profit  SharpeRatio MaxDrawDown Standard Deviation
+MAVGa9.b20  <span class="m">-8.580160e-02</span> <span class="m">-0.263464880</span>   <span class="m">0.4247071</span>          <span class="m">0.2154974</span>
+MAVGa9.b21  <span class="m">-1.239758e-02</span> <span class="m">-0.129562881</span>   <span class="m">0.3509601</span>          <span class="m">0.2154939</span>
+MAVGa9.b22   <span class="m">1.372839e-01</span>  <span class="m">0.156942103</span>   <span class="m">0.2651973</span>          <span class="m">0.2151037</span>
+MAVGa9.b23   <span class="m">2.610891e-01</span>  <span class="m">0.407980327</span>   <span class="m">0.2242422</span>          <span class="m">0.2149014</span>
+MAVGa9.b24   <span class="m">3.030262e-01</span>  <span class="m">0.496106574</span>   <span class="m">0.2133214</span>          <span class="m">0.2148145</span>
+MAVGa9.b25   <span class="m">2.608954e-01</span>  <span class="m">0.407900345</span>   <span class="m">0.2267513</span>          <span class="m">0.2147898</span>
+MAVGa9.b26   <span class="m">2.643678e-01</span>  <span class="m">0.415232725</span>   <span class="m">0.2234586</span>          <span class="m">0.2147472</span>
+MAVGa9.b27   <span class="m">1.854916e-01</span>  <span class="m">0.253573326</span>   <span class="m">0.2315723</span>          <span class="m">0.2148017</span>
+MAVGa9.b28   <span class="m">1.828007e-01</span>  <span class="m">0.248343293</span>   <span class="m">0.2180627</span>          <span class="m">0.2147171</span></code></pre></div>
+
+<p><img src="/images/appl_multiple_averages.png" alt="Strategy Graph" /></p>
+
+<hr />
+
+<p><img src="/images/aapl_outof_sample.png" alt="Strategy Graph" /></p>
+
 
   </article>
   

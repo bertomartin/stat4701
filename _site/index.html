@@ -11,7 +11,7 @@
 
   <title>
     
-      QuantTradr &middot; Using R & Python to test trading strategies
+      QuantTradR &middot; Using R & Python to test trading strategies
     
   </title>
 
@@ -126,7 +126,7 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">QuantTradr</a>
+            <a href="/" title="Home">QuantTradR</a>
             <small>Using R & Python to test trading strategies</small>
           </h3>
         </div>
@@ -138,7 +138,7 @@
   <article class="post">
     <h1 class="post-title">
       <a href="/2015/04/18/introduction/">
-        Introducing QuantTradr
+        Introducing QuantTradR
       </a>
     </h1>
 
@@ -146,9 +146,60 @@
 
     <div class="message">
   QuantTradr is a back testing framework for investigating trading strategies.
-  We will test various trading strategies particularly based on Technical
+  We will test various trading strategies including strategies based on Technical
   Analysis indicators, Twitter sentiments and Insider transactions.
 </div>
+
+<h2 id="what-is-a-trading-strategy">What is a trading strategy?</h2>
+<p>Generally, a trading strategy is a set of rules that gives you an edge in
+trading. It consists of:</p>
+
+<blockquote>
+  <ul>
+    <li><strong>A trading idea</strong> - this will be used to create the signal</li>
+    <li><strong>Trading Rules</strong> - This includes money management rules, position sizing rules,
+stop protection, profit protection and possibly others.</li>
+  </ul>
+</blockquote>
+
+<p>It is important to test your trading strategy before using it with real money.
+This is where backtesting comes in.</p>
+
+<h2 id="backtesting">Backtesting</h2>
+
+<p>As the name suggests, backtesting is applying your trading strategy over
+historical data and seeing how it performs versus a benchmark. A suitable
+benchmark is an index like the S&amp;P 500. In comparing your strategy against the
+index, you need a well defined set of performance measures.</p>
+
+<h2 id="performance-measures">Performance Measures</h2>
+
+<p>The following are the most used set of metrics for measuring performance:</p>
+
+<ol>
+  <li>
+    <p><strong>Sharpe Ratio</strong>
+-This is the risk adjusted returns. Basically, how much risk are you taking
+ for excess returns above the risk-free rate (Treasuries). This is the
+ industry standard measure of performance. Higher is better.</p>
+  </li>
+  <li>
+    <p><strong>Cummulative Returns</strong>
+    -Total returns at the end of the investing period.</p>
+  </li>
+  <li>
+    <p><strong>Drawdowns (and max drawdowns)</strong>
+   -The peak-to-trough decline during a specific period of an investment.</p>
+  </li>
+</ol>
+
+<h2 id="parameter-optimization">Parameter Optimization</h2>
+
+<p>After looking at how your strategy performed based on the performance measures,
+the next step is to optimize the parameter for a specified metric (usually the
+Sharpe Ratio). Parameter optimization involves changing the values of the
+parameters you use to generate your signal, and choosing the parameters that
+give you the best value of your selected metric.</p>
 
   </article>
   

@@ -9,7 +9,7 @@ title: Introducing QuantTradR
   Analysis indicators, Twitter sentiments and Insider transactions.
 </div>
 
-### What is a trading strategy?
+## What is a trading strategy?
 Generally, a trading strategy is a set of rules that gives you an edge in
 trading. It consists of:
 
@@ -20,14 +20,14 @@ trading. It consists of:
 It is important to test your trading strategy before using it with real money.
 This is where backtesting comes in.
 
-### Backtesting
+## Backtesting
 
 As the name suggests, backtesting is applying your trading strategy over
 historical data and seeing how it performs versus a benchmark. A suitable
 benchmark is an index like the S&P 500. In comparing your strategy against the
 index, you need a well defined set of performance measures.
 
-### Performance Measures
+## Performance Measures
 
 The following are the most used set of metrics for measuring performance:
 
@@ -42,7 +42,7 @@ The following are the most used set of metrics for measuring performance:
   3. **Drawdowns (and max drawdowns)**
    -The peak-to-trough decline during a specific period of an investment.
 
-### Parameter Optimization
+## Parameter Optimization
 
 After looking at how your strategy performed based on the performance measures,
 the next step is to optimize the parameter for a specified metric (usually the

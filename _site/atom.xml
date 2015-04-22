@@ -4,7 +4,7 @@
  <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-21T23:45:48-04:00</updated>
+ <updated>2015-04-21T23:48:56-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -23,7 +23,7 @@
   Analysis indicators, Twitter sentiments and Insider transactions.
 &lt;/div&gt;
 
-&lt;h3 id=&quot;what-is-a-trading-strategy&quot;&gt;What is a trading strategy?&lt;/h3&gt;
+&lt;h2 id=&quot;what-is-a-trading-strategy&quot;&gt;What is a trading strategy?&lt;/h2&gt;
 &lt;p&gt;Generally, a trading strategy is a set of rules that gives you an edge in
 trading. It consists of:&lt;/p&gt;
 
@@ -38,14 +38,14 @@ stop protection, profit protection and possibly others.&lt;/li&gt;
 &lt;p&gt;It is important to test your trading strategy before using it with real money.
 This is where backtesting comes in.&lt;/p&gt;
 
-&lt;h3 id=&quot;backtesting&quot;&gt;Backtesting&lt;/h3&gt;
+&lt;h2 id=&quot;backtesting&quot;&gt;Backtesting&lt;/h2&gt;
 
 &lt;p&gt;As the name suggests, backtesting is applying your trading strategy over
 historical data and seeing how it performs versus a benchmark. A suitable
 benchmark is an index like the S&amp;amp;P 500. In comparing your strategy against the
 index, you need a well defined set of performance measures.&lt;/p&gt;
 
-&lt;h3 id=&quot;performance-measures&quot;&gt;Performance Measures&lt;/h3&gt;
+&lt;h2 id=&quot;performance-measures&quot;&gt;Performance Measures&lt;/h2&gt;
 
 &lt;p&gt;The following are the most used set of metrics for measuring performance:&lt;/p&gt;
 
@@ -66,7 +66,7 @@ index, you need a well defined set of performance measures.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;parameter-optimization&quot;&gt;Parameter Optimization&lt;/h3&gt;
+&lt;h2 id=&quot;parameter-optimization&quot;&gt;Parameter Optimization&lt;/h2&gt;
 
 &lt;p&gt;After looking at how your strategy performed based on the performance measures,
 the next step is to optimize the parameter for a specified metric (usually the

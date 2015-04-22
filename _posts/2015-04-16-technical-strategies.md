@@ -81,4 +81,78 @@ Cumulative Return        2.301742         2.361772
 Lets see whether we can improve our strategy.
 ![Strategy Graph]({{site.baseurl}}/images/aapl_sma50_200.png)
 
+**Framework**
+{% highlight r %}
+
+library(quantmod)
+library(PerformanceAnalytics)
+
+#load my functions
+if(!exists("StrategyData", mode="function")) source("strategyData.R") #get strategy data
+if(!exists("TradingStrategy", mode="function")) source("TradingStrategy.R") #define strategy
+if(!exists("RunIterativeStrategy", mode="function")) source("RunIterativeStrategy.R") #optimization code
+if(!exists("CalculatePerformanceMetric", mode="function")) source("strategyMetrics.R") #calculate performance
+if(!exists("PerformanceTable", mode="function")) source("strategyMetrics.R") #generate table of performance (1 row per strategy)
+if(!exists("OrderPerformanceTable", mode="function")) source("strategyMetrics.R") #order performance (best at top)
+if(!exists("SelectTopNStrategies", mode="function")) source("strategyMetrics.R") #select the best n performing strateies
+if(!exists("FindOptimumStrategy", mode="function")) source("strategyMetrics.R") #plot top strategies against each other and print performance table
+
+
+nameOfStrategy <- "AAPL Moving Average Strategy"
+
+#specify dates
+trainingStartDate <- as.Date("2007-01-01")
+trainingEndDate <- as.Date("2012-06-19")
+outofSampleStartDate <- as.Date("2012-06-20")
+outofSampleEndDate <- as.Date("2014-01-01")
+
+#1. Get Data
+trainingData = StrategyData("AAPL", trainingStartDate, trainingEndDate, outofSampleStartDate, outofSampleEndDate)$trainingData
+testData <- StrategyData("AAPL", trainingStartDate, trainingEndDate, outofSampleStartDate, outofSampleEndDate)$testData
+
+#index returns
+indexReturns <- Delt(Cl(window(stockData$AAPL, start = outofSampleStartDate, end = outofSampleEndDate))) #calculate returns for out of sample
+colnames(indexReturns) <- "AAPL Buy & Hold"
+
+pTab <- FindOptimumStrategy(trainingData) #performance table of each strategy
+
+#test: TODO select top strategy and test against benchmark
+dev.new() #doesn't work in rstudio
+#manually specify a strategy
+outofSampleReturns <- TradingStrategy(testData, mavga_period=11, mavgb_period=24)
+finalReturns <- cbind(outofSampleReturns, indexReturns)
+charts.PerformanceSummary(finalReturns, main=paste(nameOfStrategy, "- Out of Sample"), geometric=FALSE)
+
+{% endhighlight %}
+
+_the files are in the repository here:_[framework](https://github.com/bertomartin/stat4701/tree/master/framework){:target="_blank"}
+
+### Results/Performance
+
+{% highlight r %}
+
+[1] "Calculating Performance Metric:  colSums"
+[1] "Calculating Performance Metric:  SharpeRatio.annualized"
+[1] "Calculating Performance Metric:  maxDrawdown"
+[1] "Calculating Performance Metric:  sd.annualized"
+[1] "Performance Table"
+                   Profit  SharpeRatio MaxDrawDown Standard Deviation
+MAVGa9.b20  -8.580160e-02 -0.263464880   0.4247071          0.2154974
+MAVGa9.b21  -1.239758e-02 -0.129562881   0.3509601          0.2154939
+MAVGa9.b22   1.372839e-01  0.156942103   0.2651973          0.2151037
+MAVGa9.b23   2.610891e-01  0.407980327   0.2242422          0.2149014
+MAVGa9.b24   3.030262e-01  0.496106574   0.2133214          0.2148145
+MAVGa9.b25   2.608954e-01  0.407900345   0.2267513          0.2147898
+MAVGa9.b26   2.643678e-01  0.415232725   0.2234586          0.2147472
+MAVGa9.b27   1.854916e-01  0.253573326   0.2315723          0.2148017
+MAVGa9.b28   1.828007e-01  0.248343293   0.2180627          0.2147171
+
+{% endhighlight %}
+
+![Strategy Graph]({{site.baseurl}}/images/appl_multiple_averages.png)
+
+***
+
+![Strategy Graph]({{site.baseurl}}/images/aapl_outof_sample.png)
+
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>QuantTradr</title>
+ <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-20T08:05:49-04:00</updated>
+ <updated>2015-04-21T23:36:24-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -13,15 +13,67 @@
 
  
  <entry>
-   <title>Introducing QuantTradr</title>
+   <title>Introducing QuantTradR</title>
    <link href="http://bertomartin.github.io///2015/04/18/introduction/"/>
    <updated>2015-04-18T00:00:00-04:00</updated>
    <id>http://bertomartin.github.io/2015/04/18/introduction</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   QuantTradr is a back testing framework for investigating trading strategies.
-  We will test various trading strategies particularly based on Technical
+  We will test various trading strategies including strategies based on Technical
   Analysis indicators, Twitter sentiments and Insider transactions.
 &lt;/div&gt;
+
+&lt;h3 id=&quot;what-is-a-trading-strategy&quot;&gt;What is a trading strategy?&lt;/h3&gt;
+&lt;p&gt;Generally, a trading strategy is a set of rules that gives you an edge in
+trading. It consists of:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A trading idea (this will be used to create the signal)&lt;/li&gt;
+  &lt;li&gt;Trading Rules. This includes money management rules, position sizing rules,
+stop protection, profit protection and possibly others.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is important to test your trading strategy before using it with real money.
+This is where backtesting comes in.&lt;/p&gt;
+
+&lt;h3 id=&quot;backtesting&quot;&gt;Backtesting&lt;/h3&gt;
+
+&lt;p&gt;As the name suggests, backtesting is applying your trading strategy over
+historical data and seeing how it performs versus a benchmark. A suitable
+benchmark is an index like the S&amp;amp;P 500. In comparing your strategy against the
+index, you need a well defined set of performance measures.&lt;/p&gt;
+
+&lt;h3 id=&quot;performance-measures&quot;&gt;Performance Measures&lt;/h3&gt;
+
+&lt;p&gt;The following are the most used set of metrics for measuring performance:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Sharpe Ratio&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This is the risk adjusted returns. Basically, how much risk are you taking
+for excess returns above the risk-free rate (Treasuries). This is the
+  industry standard measure of performance. Higher is better.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cummulative Returns&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Total returns at the end of the investing period.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drawdowns (and max drawdowns)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;The peak-to-trough decline during a specific period of an investment.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;parameter-optimization&quot;&gt;Parameter Optimization&lt;/h3&gt;
+
+&lt;p&gt;After looking at how your strategy performed based on the performance measures,
+the next step is to optimize the parameter for a specified metric (usually the
+Sharpe Ratio). Parameter optimization involves changing the values of the
+parameters you use to generate your signal, and choosing the parameters that
+give you the best value of your selected metric.&lt;/p&gt;
 </content>
  </entry>
  
@@ -64,7 +116,7 @@ spReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Delt&lt;span class=&quot;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Signal Definition&lt;/strong&gt;
     &lt;ul&gt;
-      &lt;li&gt;This is the kernel of the strategy you implement. This is where we define
+      &lt;li&gt;This is the kernel of the strategy we implement. This is where we define
 the rules of our strategy: when to buy and sell.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -78,8 +130,8 @@ sig&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&quot;&g
     &lt;ul&gt;
       &lt;li&gt;We now use the historical OHLC data and our signal to test how our strategy
 performs over a period of time. Analyzing the performance of our strategy as
-compared to a benchmark is essential in deciding whether or not to select or
-reject a strategy.&lt;/li&gt;
+compared to a benchmark is essential in deciding whether or not to select a
+strategy.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -123,6 +175,8 @@ optimize it for a value you care about, such as the Sharpe Ratio.&lt;/li&gt;
   Below, we test some basic technical strategies using our developed back
   testing framework.
 &lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bertomartin/stat4701/tree/master/framework&quot; target=&quot;_blank&quot;&gt;The strategy framework&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
@@ -186,6 +240,8 @@ optimize it for a value you care about, such as the Sharpe Ratio.&lt;/li&gt;
   We will use QuantTradr to investigate how sentiments from various news
   sources can be used as a predictor for future prices.
 &lt;/div&gt;
+
+&lt;h3 id=&quot;intro&quot;&gt;Intro&lt;/h3&gt;
 </content>
  </entry>
  

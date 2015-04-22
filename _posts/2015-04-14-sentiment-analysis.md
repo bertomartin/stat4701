@@ -22,15 +22,15 @@ title: Sentiment Analysis
 
 ##Twitter mood predicts the stock market##
 
-![twitter mood predicts stock market](Users/rob2056/Desktop/twittermood.png)
 
+![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
 ## Using News to Predict trends ##
 
-![uk oil co](Users/rob2056/Desktop/uk_oil.png)
+![uk oil co]({{site.baseurl}}/images/uk_oil.png)
 
-![twitter stock rises](Users/rob2056/Desktop/google_twitter.png)
+![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
 
 ##Resources ##
@@ -129,13 +129,13 @@ p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))
 p + geom_line()
 
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/yahoofinance_apr21.png)
 
+![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
 
 ## lets see the AAPL stock during this time ##
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/AAPL_yahoofinance.png)
+![AAPL_yahoofinance]({{site.baseurl}}/images/Final_Project/AAPL_yahoofinance.png)
 
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
 This might give us data for over a month.

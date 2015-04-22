@@ -8,4 +8,4 @@ title: Technical Strategies
   testing framework.
 </div>
 
-(The strategy framework)[https://github.com/bertomartin/stat4701/tree/master/framework]
+[The strategy framework](https://github.com/bertomartin/stat4701/tree/master/framework){:target="_blank"}

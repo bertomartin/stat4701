@@ -49,13 +49,21 @@ library(stringr)
 
 ## Extract the tweets using @YahooFinance
 apple_yahoonewstweets_apr13 = searchTwitter("@YahooFinance",lang="en",since='2015-04-13',until='2015-04-14',n=400)
+
 apple_yahoonewstweets_apr14 = searchTwitter("@YahooFinance",lang="en",since='2015-04-14',until='2015-04-15',n=400)
+
 apple_yahoonewstweets_apr15 = searchTwitter("@YahooFinance",lang="en",since='2015-04-15',until='2015-04-16',n=400)
+
 apple_yahoonewstweets_apr16 = searchTwitter("@YahooFinance",lang="en",since='2015-04-16',until='2015-04-17',n=400)
+
 apple_yahoonewstweets_apr17 = searchTwitter("@YahooFinance",lang="en",since='2015-04-17',until='2015-04-18',n=400)
+
 apple_yahoonewstweets_apr18 = searchTwitter("@YahooFinance",lang="en",since='2015-04-18',until='2015-04-19',n=400)
+
 apple_yahoonewstweets_apr19 = searchTwitter("@YahooFinance",lang="en",since='2015-04-19',until='2015-04-20',n=400)
+
 apple_yahoonewstweets_apr20 = searchTwitter("@YahooFinance",lang="en",since='2015-04-20',until='2015-04-21',n=400)
+
 apple_yahoonewstweets_apr21 = searchTwitter("@YahooFinance",lang="en",since='2015-04-21',until='2015-04-22',n=400)
 
 ##Get the text##

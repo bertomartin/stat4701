@@ -154,7 +154,7 @@ The limitation with twitter is we can get only past 8 days of data,using the sea
 This might give us data for over a month.
 
 
-## Similarly, we analyzed the tweets of @SAlphaAAPL##
+## Similarly, we analyzed the tweets of @SAlphaAAPL.This is a specific twitter account for AAPL news##
 
 ![Seeking_alpha]({{site.baseurl}}/images/seeking_alphaAAPL_correlates_volume.png)
 
@@ -207,6 +207,14 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 ![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2014.png)
 
+
+
+##AMZN stock volume vs AMZN score (Google trends) -2014 ##
+
+![gtrends_2014]({{site.baseurl}}/images/gtrends_AMZN_2014.png)
+
+
+![Amazon_stock_2014]({{site.baseurl}}/images/Amazon_stock_2014.png)
 
 
 

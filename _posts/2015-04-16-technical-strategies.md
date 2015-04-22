@@ -30,7 +30,7 @@ technical analysis tools.
 
 **Strategy 1**: _Buy APPL when it goes above 200dma, sell when it goes below_
 
-![Strategy Graph]({{site.baseurl}}images/aapl_sma200.png)
+![Strategy Graph]({{site.baseurl}}/images/aapl_sma200.png)
 
 {% highlight r %}
 
@@ -62,4 +62,4 @@ charts.PerformanceSummary(strategyReturns, geometric=FALSE)
 {% endhighlight %}
 
 ## Results
-![Strategy Graph]({{site.baseurl}}images/aapl_strategy1.png)
+![Strategy Graph]({{site.baseurl}}/images/aapl_strategy1.png)

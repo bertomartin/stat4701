@@ -129,13 +129,13 @@ p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))
 p + geom_line()
 
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/yahoofinance_apr21.png)
 
+![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
 
 ## lets see the AAPL stock during this time ##
 
-![uk oil co](Users/rob2056/Documents/STAT4701/Final_Project/AAPL_yahoofinance.png)
+![AAPL_yahoofinance]({{site.baseurl}}/images/Final_Project/AAPL_yahoofinance.png)
 
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
 This might give us data for over a month.

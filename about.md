@@ -16,7 +16,7 @@ The team members that implemented this project are listed below:
 
 * Roberto Martin [@linkedin](https://www.linkedin.com/pub/roberto-martin/8/990/211){:target="_blank"}
 * Robert Piccone [@linkedin](https://www.linkedin.com/pub/robert-piccone/6/9b1/284){:target="_blank"}
-* Rohan [@linkedin](https://www.linkedin.com){:target="_blank"}
+* Rohan Bareja [@linkedin](https://www.linkedin.com/in/rohanbareja){:target="_blank"}
 * Elias Hussen [@linkedin](https://www.linkedin.com){:target="_blank"}
 
 

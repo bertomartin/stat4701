@@ -19,31 +19,33 @@ require(quantmod)
 require(PerformanceAnalytics)
 
 #1-get data
-getSymbols("^GSPC") #getting data for the s&p 500
-SPY <- GSPC['2007-01-01::2013-06-19']
+getSymbols("AAPL") #getting data for the aapl
+AAPL <- AAPL['2007-01-01::2013-06-19']
 
 #2-Calculate the 200-Day SMAs:
-smaHi200=SMA(Hi(SPY),200)
-smaLo200=SMA(Lo(SPY),200)
+smaHi200=SMA(Hi(AAPL),200)
+smaLo200=SMA(Lo(AAPL),200)
 
 #3-Calculate the lagged trading signal vector:
-binVec=lag(ifelse(Cl(SPY)>smaHi200,1,0)+ifelse(Cl(SPY)<smaLo200,-1,0),1)
+signal=lag(ifelse(Cl(AAPL)>smaHi200,1,0)+ifelse(Cl(AAPL)<smaLo200,-1,0),1)
 
 #clean up NAs
-binVec[is.na(binVec)]=0
+signal[is.na(signal)]=0
 
 #calculate daily returns vector
-rets=diff(log(Ad(SPY))) #subtract yesterday from today
+buyAndHold=diff(log(Ad(AAPL))) #subtract yesterday from today
+colnames(buyAndHold) <- "AAPL Buy & Hold"
 
 #calculate strategy returns
-stratRets=binVec*rets
+strategyReturns=signal*buyAndHold
+colnames(strategyReturns) <- "200dma Strategy"
 
 #charts.PerformanceSummary(cbind(rets,stratRets))
-charts.PerformanceSummary(stratRets)
+charts.PerformanceSummary(strategyReturns, geometric=FALSE)
 
 #table of strategy performance
-combinedReturns3=cbind(rets,stratRets)
-charts.PerformanceSummary(combinedReturns3)
+combinedReturns3=cbind(buyAndHold,strategyReturns)
+charts.PerformanceSummary(combinedReturns3, geometric=FALSE)
 
 
 

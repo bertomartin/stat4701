@@ -4,7 +4,7 @@
  <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-22T00:32:23-04:00</updated>
+ <updated>2015-04-22T01:37:13-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -197,8 +197,37 @@ here:
 &lt;p&gt;In coming up with your trading strategy, you may use one or more of the
 technical analysis tools.&lt;/p&gt;
 
-&lt;h4 id=&quot;strategy-1&quot;&gt;Strategy 1:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Strategy 1&lt;/strong&gt;: &lt;em&gt;Buy APPL when it goes above 200dma, sell when it goes below&lt;/em&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/images/aapl_sma200.png&quot; alt=&quot;Strategy Graph&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#1-get data&lt;/span&gt;
+getSymbols&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;AAPL&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#getting data for the aapl&lt;/span&gt;
+AAPL &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; AAPL&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;2007-01-01::2013-06-19&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#2-Calculate the 200-Day SMAs:&lt;/span&gt;
+smahi200&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;SMA&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Hi&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;AAPL&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+smaLo200&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;SMA&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Lo&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;AAPL&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#3-Calculate the lagged trading signal vector:&lt;/span&gt;
+signal&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;lag&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;ifelse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Cl&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;AAPL&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;smaHi200&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;ifelse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Cl&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;AAPL&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;smaLo200&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#clean up NAs&lt;/span&gt;
+signal&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;is.na&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;signal&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#calculate daily returns vector&lt;/span&gt;
+buyAndHold&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;diff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Ad&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;AAPL&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#subtract yesterday from today&lt;/span&gt;
+&lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;buyAndHold&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;AAPL Buy &amp;amp; Hold&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#calculate strategy returns&lt;/span&gt;
+strategyReturns&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;signal&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;buyAndHold
+&lt;span class=&quot;kp&quot;&gt;colnames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;200dma Strategy&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#charts.PerformanceSummary(cbind(rets,stratRets))&lt;/span&gt;
+charts.PerformanceSummary&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;strategyReturns&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; geometric&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/images/aapl_strategy1.png&quot; alt=&quot;Strategy Graph&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  

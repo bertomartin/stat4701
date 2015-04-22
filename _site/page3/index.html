@@ -171,8 +171,37 @@ here:
 <p>In coming up with your trading strategy, you may use one or more of the
 technical analysis tools.</p>
 
-<h4 id="strategy-1">Strategy 1:</h4>
+<p><strong>Strategy 1</strong>: <em>Buy APPL when it goes above 200dma, sell when it goes below</em></p>
 
+<p><img src="/images/aapl_sma200.png" alt="Strategy Graph" /></p>
+
+<div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#1-get data</span>
+getSymbols<span class="p">(</span><span class="s">&quot;AAPL&quot;</span><span class="p">)</span> <span class="c1">#getting data for the aapl</span>
+AAPL <span class="o">&lt;-</span> AAPL<span class="p">[</span><span class="s">&#39;2007-01-01::2013-06-19&#39;</span><span class="p">]</span>
+
+<span class="c1">#2-Calculate the 200-Day SMAs:</span>
+smahi200<span class="o">=</span>SMA<span class="p">(</span>Hi<span class="p">(</span>AAPL<span class="p">),</span><span class="m">200</span><span class="p">)</span>
+smaLo200<span class="o">=</span>SMA<span class="p">(</span>Lo<span class="p">(</span>AAPL<span class="p">),</span><span class="m">200</span><span class="p">)</span>
+
+<span class="c1">#3-Calculate the lagged trading signal vector:</span>
+signal<span class="o">=</span>lag<span class="p">(</span><span class="kp">ifelse</span><span class="p">(</span>Cl<span class="p">(</span>AAPL<span class="p">)</span><span class="o">&gt;</span>smaHi200<span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span><span class="o">+</span><span class="kp">ifelse</span><span class="p">(</span>Cl<span class="p">(</span>AAPL<span class="p">)</span><span class="o">&lt;</span>smaLo200<span class="p">,</span><span class="m">-1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1">#clean up NAs</span>
+signal<span class="p">[</span><span class="kp">is.na</span><span class="p">(</span>signal<span class="p">)]</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1">#calculate daily returns vector</span>
+buyAndHold<span class="o">=</span><span class="kp">diff</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>Ad<span class="p">(</span>AAPL<span class="p">)))</span> <span class="c1">#subtract yesterday from today</span>
+<span class="kp">colnames</span><span class="p">(</span>buyAndHold<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;AAPL Buy &amp; Hold&quot;</span>
+
+<span class="c1">#calculate strategy returns</span>
+strategyReturns<span class="o">=</span>signal<span class="o">*</span>buyAndHold
+<span class="kp">colnames</span><span class="p">(</span>strategyReturns<span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;200dma Strategy&quot;</span>
+
+<span class="c1">#charts.PerformanceSummary(cbind(rets,stratRets))</span>
+charts.PerformanceSummary<span class="p">(</span>strategyReturns<span class="p">,</span> geometric<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span></code></pre></div>
+
+<h2 id="results">Results</h2>
+<p><img src="/images/aapl_strategy1.png" alt="Strategy Graph" /></p>
 
   </article>
   

@@ -4,7 +4,7 @@
  <title>QuantTradR</title>
  <link href="http://bertomartin.github.io//atom.xml" rel="self"/>
  <link href="http://bertomartin.github.io/"/>
- <updated>2015-04-21T23:36:24-04:00</updated>
+ <updated>2015-04-21T23:45:48-04:00</updated>
  <id>http://bertomartin.github.io</id>
  <author>
    <name>Mark Otto</name>
@@ -27,11 +27,13 @@
 &lt;p&gt;Generally, a trading strategy is a set of rules that gives you an edge in
 trading. It consists of:&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;A trading idea (this will be used to create the signal)&lt;/li&gt;
-  &lt;li&gt;Trading Rules. This includes money management rules, position sizing rules,
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;A trading idea&lt;/strong&gt; - this will be used to create the signal&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Trading Rules&lt;/strong&gt; - This includes money management rules, position sizing rules,
 stop protection, profit protection and possibly others.&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;It is important to test your trading strategy before using it with real money.
 This is where backtesting comes in.&lt;/p&gt;
@@ -48,22 +50,19 @@ index, you need a well defined set of performance measures.&lt;/p&gt;
 &lt;p&gt;The following are the most used set of metrics for measuring performance:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Sharpe Ratio&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;This is the risk adjusted returns. Basically, how much risk are you taking
-for excess returns above the risk-free rate (Treasuries). This is the
-  industry standard measure of performance. Higher is better.&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Sharpe Ratio&lt;/strong&gt;
+-This is the risk adjusted returns. Basically, how much risk are you taking
+ for excess returns above the risk-free rate (Treasuries). This is the
+ industry standard measure of performance. Higher is better.&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Cummulative Returns&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Total returns at the end of the investing period.&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cummulative Returns&lt;/strong&gt;
+    -Total returns at the end of the investing period.&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Drawdowns (and max drawdowns)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;The peak-to-trough decline during a specific period of an investment.&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Drawdowns (and max drawdowns)&lt;/strong&gt;
+   -The peak-to-trough decline during a specific period of an investment.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 

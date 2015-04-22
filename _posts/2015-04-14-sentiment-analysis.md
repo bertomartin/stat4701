@@ -46,8 +46,9 @@ title: Sentiment Analysis
 * Google trends
 * Yahoo News,Google News, Yahoo Finance, Seeking Alpha
 
-
+{% highlight text %}
 ##Libraries used##
+
 library(tm)
 
 library(tm.plugin.webmining)
@@ -140,7 +141,7 @@ score_apple=scoreCorpus(apple_yahoonewstext,hu.liu.pos,hu.liu.neg)
 
 p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))  
 p + geom_line()
-
+{% endhighlight %}
 
 
 ![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)

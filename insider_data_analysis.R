@@ -2,6 +2,11 @@ library(plyr)
 library(ggplot2)
 require(quantmod)
 
+#Get AAPL prices from 2013-01-01 thru 2015-01-01 
+#Change ticker symbol in following 2 lines to perform on different company
+getSymbols("AAPL") 
+AAPL <- AAPL['2013-01-01::2015-01-01']
+
 txnDate<-as.Date(transDate)
 class(transShareQty)<-"integer"
 class(transSharePrice)<-"numeric"
@@ -79,11 +84,6 @@ testAllSent365<-getDailySentiment(unique(dfInsiderData$insiderID),dfTrl12mNetPos
 testOffSent180 <- getDailySentiment(officerIDs,dfTrl6mNetPositionChg,180)
 testDirSent180<-getDailySentiment(directorIDs,dfTrl6mNetPositionChg,180)
 testAllSent180<-getDailySentiment(unique(dfInsiderData$insiderID),dfTrl6mNetPositionChg,180)
-
-#Get AAPL prices
-getSymbols("AAPL") 
-#AAPL <- AAPL[paste(min(testAllSent180$vDates),'::',max(testAllSent180$vDates),sep="")]
-AAPL <- AAPL['2013-01-01::2015-01-01']
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testAllSent180$avgScores[testAllSent180$vDates %in% index(AAPL)]))
 

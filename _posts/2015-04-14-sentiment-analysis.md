@@ -219,7 +219,7 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 
 
-## Maybe More ... Predicting Sales ?? ##
+## Maybe More ... Predicting Sales ?? Samsung Galaxy S5 vs Iphone 6 Plus  ##
 
 ![Iphone_samsung]({{site.baseurl}}/images/iphone_samsung_gtrends.png)
 

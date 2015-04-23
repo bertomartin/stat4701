@@ -214,7 +214,7 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 
 
-##AAPL score(Google trends) vs AAPL stock volume  - 2014 ##
+##AAPL score(Google trends) vs AAPL stock volume- 2014 ##
 
 
 ![gtrends_2015]({{site.baseurl}}/images/AAPL_gtrends_2014.png)
@@ -223,7 +223,7 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 
 
-## AMZN score (Google trends) vs AMZN stock volume   -2014 ##
+## AMZN score (Google trends) vs AMZN stock volume -2014 ##
 
 ![gtrends_2014]({{site.baseurl}}/images/gtrends_AMZN_2014.png)
 

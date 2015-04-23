@@ -165,7 +165,7 @@ The limitation with twitter is we can get only past 8 days of data,using the sea
 This might give us data for over a month.
 
 
-## Similarly, we analyzed the tweets of @SAlphaAAPL.This is a specific twitter account for AAPL news##
+## Similarly, we analyzed the tweets of @SAlphaAAPL from March 18,2015 - April 23,2015 .This is a specific twitter account for AAPL news##
 
 ![Seeking_alpha]({{site.baseurl}}/images/SAlphaAAPL_apr23.png)
 

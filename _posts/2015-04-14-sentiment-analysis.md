@@ -161,13 +161,25 @@ p + geom_line()
 
 ![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
+##Why this trend ? ##
+
+![AAPL_selloutnews]({{site.baseurl}}/images/apple_sellout_news.png)
+
+![AAPL_watch_news]({{site.baseurl}}/images/apple_watch_news_april23.png)
+
+![SAAPL_watch_news]({{site.baseurl}}/images/SAAPL_sellout.png)
+
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
 This might give us data for over a month.
 
 
 ## Similarly, we analyzed the tweets of @SAlphaAAPL from March 18,2015 - April 23,2015 .This is a specific twitter account for AAPL news##
 
+An example ...
+
 ![Seeking_alpha]({{site.baseurl}}/images/SAlphaAAPL_apr23.png)
+
+![Seeking_alpha]({{site.baseurl}}/images/SAAPL_screenshot.png)
 
 ##AAPL stock Volume during this time ##
 

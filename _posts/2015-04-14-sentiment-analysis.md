@@ -85,6 +85,15 @@ apple_yahoonewstext = sapply(apple_yahoonewstweets_apr21, function(x) x$getText(
 ## Clean the data ##
 apple_yahoonewstext=str_replace_all(apple_yahoonewstext_apr21,"[^[:graph:]]", " ")
 
+#Use the searchterm to filter
+
+searchTerm="Apple"
+
+#filter for Apple news
+
+apple_yahoonewstext_apr=unique(apple_yahoonewstext_apr20[grepl(searchTerm,apple_yahoonewstext_apr)])
+
+
  ## Calculate the Sentiment Score ##
  
  scoreCorpus <- function(text, pos, neg) {

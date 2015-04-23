@@ -15,3 +15,137 @@ In developing this strategy of understanding a stock's performance and recommend
 
 ### Code
 
+Here are some snippets of code used in collecting, processing and visualizing the datasets used,
+
+Some python libraries used:
+```python
+import pandas as p
+import requests as r
+from StringIO import StringIO
+import datetime
+from bs4 import BeautifulSoup
+import re
+from alchemyapi import AlchemyAPI
+import json
+import numpy as np
+from flask import request
+from os import path
+import csv
+```
+
+Code to download stock data from Yahoo, converts it into a Pandas Dataframe returns it to the calling function
+
+```python
+def get_quotes(start_date='2015-04-01', end_date='2015-04-21', ticker='AAPL'):
+    
+    d = r.get('http://ichart.yahoo.com/table.csv?s={0}&a=01&b=04&c=2015&d=21&e=04&f=2015'.format(ticker))
+    dat = d.content
+    csd = str(dat).strip("b'").encode('utf-8')
+    data = StringIO(csd)
+    df = p.read_csv(data, sep=',')
+    df = df.set_index('Date')
+    return df.to_json()
+```
+
+The methods below dynamically construct a url mimic the resulting advanced search url's of yahoo and twitter. By doing this, I was able to go around the restrictions of Twitter api and avoid using Yahoo's api. By utilizing this and the BeautifulSoup library, I was able to download historical tweets and news.
+
+```python
+def construct_search_url_yh(start_date, end_date=datetime.date.today(), ticker='AAPL'):
+    url_dict = {}
+    date_list = [end_date.date() - datetime.timedelta(days=x) for x in range(1, (end_date - start_date).days + 1)]
+    for d in date_list:
+        g_url = "http://finance.yahoo.com/q/h?s={0}&t={1}".format(
+            ticker, str(d))
+        url_dict[str(d)] = g_url
+    return url_dict
+
+
+def construct_search_url_tw(search_term, start_date, end_date=datetime.date.today()):
+    url_dict = {}
+    date_list = [end_date - datetime.timedelta(days=x) for x in range(1, (end_date - start_date).days + 1)]
+    end_date = start_date + datetime.timedelta(days=1)
+    for i, d in enumerate(date_list):
+        g_url = "https://twitter.com/search?q={0}%20from%3Ayahoofinance%20since%3A{1}%20until%3A{2}&src=typd".format(
+            search_term, start_date, end_date)
+        start_date = end_date
+        end_date = start_date + datetime.timedelta(days=1)
+        url_dict[str(d)] = g_url
+    return url_dict
+```
+
+Here is the function to get and parse historical tweets using the url generated above. 
+
+```python
+
+def collect_historical_tweets(url):
+    req = r.get(url)
+    beatw = BeautifulSoup(req.text)
+    twits_list = []
+    for pa in beatw.find_all('p'):
+        # print pa.get('class', None)
+        if pa.get('class', [''])[0] == "js-tweet-text":
+            twits_list += [str(pa)]
+
+    return twits_list
+```
+
+Below is the code to scrape the historical news html obtained from Yahoo to identify links to articles that were posted on the requested day.
+
+```python
+def news_scrape(rurl):
+    links = []
+    rss = r.get(rurl)
+    soup = BeautifulSoup(rss.text)
+    for l in soup.find_all('a'):
+        # print(l)
+        lhr = l['href']
+        mtch = re.search("\*http://.+?\"", lhr)
+        try:
+            url = mtch.group()
+            links += [url[1:-1]]
+        except AttributeError:
+            mtch = re.search('http:\/\/finance.yahoo.com\/news.+\.html', lhr)
+            try:
+                url = mtch.group()
+                links += [url]
+            except AttributeError:
+                continue
+            print("Regex Error, " + str(l))
+            continue
+    print (links)
+    return links
+```
+
+Finally, a basic linear regression was performed by using data from 04/01 - 04/20 for training, to test the open price of 04/21. We obtained the following result:
+
+```json
+
+{
+
+    actual: 128,
+    variance score: 0,
+    rmse: 2.5693,
+    features: [
+        "trend",
+        "score",
+        "Close",
+        "Volume"
+    ],
+    predicted: 125,
+    recommendation: 0,
+    coefs: [
+        2.045,
+        -0.0659,
+        0.2468,
+        -1.6672
+    ],
+    target: "Open Price"
+
+}
+```
+
+### Visualizations
+
+Most of the visualizations for this project were done in ggplot2 but we also have a few in HighCharts that are part of the MarketSentimentalism module. Here are a few simple line plots to compare the movement of Apple's stock against the the four variables we used for this strategy.
+
+

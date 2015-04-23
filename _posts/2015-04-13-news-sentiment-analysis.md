@@ -1,3 +1,8 @@
+---
+layout: post
+title: Sentiment Analysis
+---
+
 ### News Sentiments
 ### Overview
 One of the strategies we wanted to test was a trading strategy that is purely based on news sentiments collected from one or more news sources such as Google Finance News or Yahoo Finance News. With the abundance of so much news and other data online updated every second, we decided to experiment with financial news about the selected stock to find signals that inform us whether it is time to buy, sell or hold the stock.
@@ -18,7 +23,8 @@ In developing this strategy of understanding a stock's performance and recommend
 Here are some snippets of code used in collecting, processing and visualizing the datasets used,
 
 Some python libraries used:
-```python
+
+{% highlight python %}
 import pandas as p
 import requests as r
 from StringIO import StringIO
@@ -31,12 +37,12 @@ import numpy as np
 from flask import request
 from os import path
 import csv
-```
+
 
 Code to download stock data from Yahoo, converts it into a Pandas Dataframe returns it to the calling function
 
-```python
-def get_quotes(start_date='2015-04-01', end_date='2015-04-21', ticker='AAPL'):
+
+    def get_quotes(start_date='2015-04-01', end_date='2015-04-21', ticker='AAPL'):
     
     d = r.get('http://ichart.yahoo.com/table.csv?s={0}&a=01&b=04&c=2015&d=21&e=04&f=2015'.format(ticker))
     dat = d.content
@@ -45,7 +51,7 @@ def get_quotes(start_date='2015-04-01', end_date='2015-04-21', ticker='AAPL'):
     df = p.read_csv(data, sep=',')
     df = df.set_index('Date')
     return df.to_json()
-```
+
 
 The methods below dynamically construct a url mimic the resulting advanced search url's of yahoo and twitter. By doing this, I was able to go around the restrictions of Twitter api and avoid using Yahoo's api. By utilizing this and the BeautifulSoup library, I was able to download historical tweets and news.
 

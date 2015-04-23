@@ -288,6 +288,17 @@ R package tm.plugin.webmining gives you access to the news.But we have to build(
 -Description score vs Stock Price/Volume ?
 
 
+Metadata:
+  author       : character(0)
+  datetimestamp: 2015-04-20 08:09:09
+  description  : International Business Times AUApple Inc (AAPL) Stock To Soar As Analysts Remain Bullish On The Watch; $1 ...International Business Times AUApple Inc (AAPL) stock is predicted to reach the price target of $185 per share. Investment bank FBR has rated Apple stock and declared that the iPhone maker will soon become the world's first corporation to be valued at $1 trillion. FBR analyst Daniel ...FBR Capital Markets gives Apple trillion-dollar valuation with $185 price targetApple InsiderApple's $1 trillion dream slips awayUSA TODAYWhy this analyst thinks Apple shares are headed to $185MarketWatchCNBC -Smarter Analyst -Benchmark Reporterall 81 news articles »
+  heading      : Apple Inc (AAPL) Stock To Soar As Analysts Remain Bullish On The Watch; $1 ... - International Business Times AU
+  id           : tag:news.google.com,2005:cluster=http://au.ibtimes.com/apple-inc-aapl-stock-soar-analysts-remain-bullish-watch-1-trillion-valuation-predicted-1440929
+  language     : character(0)
+  origin       : http://news.google.com/news/url?sa=t&fd=R&ct2=us&usg=AFQjCNFfA81zQdcoGrj9ju4ksg_MdOV9ug&clid=c3a7d30bb8a4878e06b80cf16b898331&cid=52778805833151&ei=NCQ1VcCgCtrS3AHKnIGQDw&url=http://au.ibtimes.com/apple-inc-aapl-stock-soar-analysts-remain-bullish-watch-1-trillion-valuation-predicted-1440929
+  
+  
+
 ### Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data###
 
 ###Use the data collected from the past to predict a signal for the future###

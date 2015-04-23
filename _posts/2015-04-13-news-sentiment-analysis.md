@@ -118,6 +118,8 @@ def news_scrape(rurl):
 
 Finally, a basic linear regression was performed by using data from 04/01 - 04/20 for training, to test the open price of 04/21. We obtained the following result:
 
+http://localhost:5000/forecast/
+
 ```json
 
 {
@@ -182,6 +184,8 @@ is_published: true
 ```
 
 Here is a sample of the scraped twitter data that will be returned by the url above:
+
+http://localhost:5000/tweets/AAPL?start_date=2015-04-04&end_date=2015-04-05
 
 ```json
 

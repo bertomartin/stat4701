@@ -148,4 +148,10 @@ Finally, a basic linear regression was performed by using data from 04/01 - 04/2
 
 Most of the visualizations for this project were done in ggplot2 but we also have a few in HighCharts that are part of the MarketSentimentalism module. Here are a few simple line plots to compare the movement of Apple's stock against the the four variables we used for this strategy.
 
+[Opening Price, Google Trend]({{site.baseurl}}/images/open_trend.png)
 
+
+[Opening Price, Sentiment]({{site.baseurl}}/images/open_sentiment.png)
+
+
+[Opening Price, Volume]({{site.baseurl}}/images/open_volume.png)

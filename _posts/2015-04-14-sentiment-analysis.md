@@ -261,6 +261,9 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 ##What Next ? ##
 
 -Collect Financial News over a period of time(Google News/Yahoo News/Seeking Alpha/Stocktwits).
+
 -Grab headlines/description from the news.
+
 -Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data.
+
 -Use the data collected from the past to predict a signal for the future.

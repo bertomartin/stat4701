@@ -177,9 +177,11 @@ This might give us data for over a month.
 
 An example ...
 
+![Seeking_alpha]({{site.baseurl}}/images/SAAPL_screenshot.png)
+
 ![Seeking_alpha]({{site.baseurl}}/images/SAlphaAAPL_apr23.png)
 
-![Seeking_alpha]({{site.baseurl}}/images/SAAPL_screenshot.png)
+
 
 ##AAPL stock Volume during this time ##
 

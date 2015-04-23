@@ -288,6 +288,6 @@ R package tm.plugin.webmining gives you access to the news.But we have to build(
 -Description score vs Stock Price/Volume ?
 
 
--Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data.
+### Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data###
 
--Use the data collected from the past to predict a signal for the future.
+###Use the data collected from the past to predict a signal for the future###

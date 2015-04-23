@@ -173,6 +173,7 @@ p + geom_line()
 
 The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.
 
+
 But if we want to get the data for a specific user account,we can get upto 3200 tweets.This might give us data for over a month.
 
 

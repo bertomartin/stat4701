@@ -66,7 +66,7 @@ http://localhost:5000/forecast/
 http://localhost:5000/fb/Apple-Inc?access_token=xxxx
 
 
-{
+    {
     category: "Company",
     talking_about_count: 5784,
     description: "Apple Inc. is an American multinational corporation headquartered ...
@@ -80,7 +80,7 @@ http://localhost:5000/fb/Apple-Inc?access_token=xxxx
     state: "CA",
     street: "1 Infinite Loop",
     latitude: 37.33158849705
-},
+    },
     name: "Apple Inc.",
     phone: "(408) 996-1010",
     link: "https://www.facebook.com/pages/Apple-Inc/105596369475033",
@@ -95,7 +95,7 @@ http://localhost:5000/fb/Apple-Inc?access_token=xxxx
     checkins: 169646,
     id: "105596369475033",
     is_published: true
-}
+    }
 
 
 Here is a sample of the scraped twitter data that will be returned by the url above:
@@ -103,7 +103,7 @@ Here is a sample of the scraped twitter data that will be returned by the url ab
 http://localhost:5000/tweets/AAPL?start_date=2015-04-04&end_date=2015-04-05
 
 
-{
+    {
     "2015-04-04": [
             "
     The iPhone is clearly the world's preferred tech luxury item. $AAPL unbeatable in #China: http://www.forbes.com/sites/kenrapoza/2015/04/04/apple-takes-bigger-bite-of-xiaomis-smartphone-market-in-china/\u00a0\u2026
@@ -129,10 +129,10 @@ http://localhost:5000/tweets/AAPL?start_date=2015-04-04&end_date=2015-04-05
     Hope I win this #iPad mini from @ValueWalk! $AAPL http://www.valuewalk.com\u00a0 http://lockerdo.me/5~psk\u00a0
     "
         ]
-}
-```
+    }
 
-### Visualizations
+
+## Visualizations
 
 Most of the visualizations for this project were done in ggplot2 but we also have a few in HighCharts that are part of the MarketSentimentalism module. Here are a few simple line plots to compare the movement of Apple's stock against the the four variables we used for this strategy.
 

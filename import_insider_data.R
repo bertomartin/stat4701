@@ -1,6 +1,9 @@
 library(XML)
 #install.packages('RCurl')
 library(RCurl)
+#The companyCIK vaue can be change to the SEC-assigned CIK value of any listed company
+#It is currently set to pull and parse Apple (AAPL) insider transaction data
+companyCIK <- "0000320193"
 con<-getCurlHandle( ftp.use.epsv = FALSE)
 insiderID <- character()
 isOfficer <- logical()
@@ -16,10 +19,13 @@ transSharePrice <- numeric()
 transCodeAcqDisp <- character()
 postTransSharesHeld <- integer()
 fileName <- character()
+# start and checkstart values can be compared after an FTP connection-related script termination
+# the values should always be equal when the termination is due to an FTP problem, in which case you can resume from line 23
 start <- 0
-checkstart <- 0
-#loaded up to start=423 4/22/2015
-URL <- paste("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=&dateb=&owner=only&start=",start,"&count=100&output=atom",sep="")
+checkstart <- 0 
+#NOTES: -If you experience and FTP connection error that causes the script to end prematurely,
+#        keep your R workspace intact and restart the code from this line for the process to resume where it left off. 
+URL <- paste("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=",companyCIK,"&type=&dateb=&owner=only&start=",start,"&count=100&output=atom",sep="")
 doc <- xmlParse(URL) 
 src <- getNodeSet(doc, "//x:filing-href", c(x = "http://www.w3.org/2005/Atom")) 
 while (length(src)>0){
@@ -30,7 +36,6 @@ for (i in 1:length(src)) {
   filenames = paste(url, strsplit(filenames, "\r*\n")[[1]], sep = "")
   filenames = filenames[grepl('.xml',filenames)]
   contents = getURL(filenames[1], curl = con)
-  #names(contents[i]) = filenames[1]
   contents <- xmlParse(contents)
   r<- xmlRoot(contents)
   if (xmlValue(r[[2]])!=4) {next}
@@ -73,7 +78,7 @@ for (i in 1:length(src)) {
   }
   start <- start + 1
 }
-URL <- paste("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=&dateb=&owner=only&start=",start,"&count=100&output=atom",sep="")
+URL <- paste("http://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=",companyCIK,"&type=&dateb=&owner=only&start=",start,"&count=100&output=atom",sep="")
 doc <- xmlParse(URL) 
 src <- getNodeSet(doc, "//x:filing-href", c(x = "http://www.w3.org/2005/Atom")) 
 }

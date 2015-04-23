@@ -152,11 +152,12 @@ p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))
 p + geom_line()
 {% endhighlight %}
 
+## Plot of #Apple using @Yahoofinance ##
 
 ![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
 
-## lets see the AAPL stock during this time ##
+## lets see the AAPL stock price during this time ##
 
 ![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
@@ -213,7 +214,7 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 ##AAPL stock volume vs AAPL score(Google trends) - 2014 ##
 
 
-![gtrends_2015]({{site.baseurl}}/images/gtrends_2014.png)
+![gtrends_2015]({{site.baseurl}}/images/AAPL_gtrends_2014.png)
 
 ![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2014.png)
 

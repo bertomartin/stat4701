@@ -88,41 +88,41 @@ AAPL <- AAPL['2013-01-01::2015-01-01']
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testAllSent180$avgScores[testAllSent180$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers and Directors Trailing 6 Month Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers and Directors Trailing 6 Month Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testOffSent180$avgScores[testOffSent180$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers Trailing 6 Month Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers Trailing 6 Month Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testDirSent180$avgScores[testDirSent180$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Directors Trailing 6 Month Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Directors Trailing 6 Month Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testAllSent365$avgScores[testAllSent365$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers and Directors Trailing 1 Year Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers and Directors Trailing 1 Year Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testOffSent365$avgScores[testOffSent365$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers Trailing 1 Year Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Officers Trailing 1 Year Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 
 
 dfPlot<-(data.frame(index(AAPL),Ad(AAPL),testDirSent365$avgScores[testDirSent365$vDates %in% index(AAPL)]))
 
 ggplot(dfPlot, aes(dfPlot[,1])) + 
-  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Insider Sentiment Score")) + 
-  geom_line(aes(y = dfPlot[,3], colour = "Indexed Share Price")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Directors Trailing 1 Year Net Position Changes", x = "", y="") +
+  geom_line(aes(y = (dfPlot$AAPL.Adjusted-dfPlot$AAPL.Adjusted[1])/dfPlot$AAPL.Adjusted[1], colour = "Indexed Share Price")) + 
+  geom_line(aes(y = dfPlot[,3], colour = "Insider Sentiment Score")) + labs(title="Insider Sentiment Score vs Indexed Share Price\nBased on Directors Trailing 1 Year Net Position Changes", x = "", y="") +
   theme(legend.direction="vertical", legend.title= element_blank()) 

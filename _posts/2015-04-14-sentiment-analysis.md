@@ -20,14 +20,14 @@ title: Sentiment Analysis
 * First move in S&P Futures caused by bin Laden's death occurred 4 minutes before Bloomberg reported news.
 
 
-##Twitter for stock market##
+#Twitter for stock market#
 
 
 ![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
 
-## Using News to Predict trends ##
+# Using News to Predict trends #
 
 
 

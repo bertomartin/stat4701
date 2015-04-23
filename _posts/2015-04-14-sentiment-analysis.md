@@ -161,7 +161,7 @@ p + geom_line()
 
 ![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
-##Why this trend ? /What we are After?  ##
+##Why this trend ? / What we are After?  ##
 
 ![AAPL_selloutnews]({{site.baseurl}}/images/apple_sellout_news.png)
 

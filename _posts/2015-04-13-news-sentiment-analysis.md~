@@ -143,6 +143,76 @@ Finally, a basic linear regression was performed by using data from 04/01 - 04/2
 
 }
 ```
+### Example ETL Outputs
+
+http://localhost:5000/fb/Apple-Inc?access_token=xxxx
+
+```json
+
+{
+category: "Company",
+talking_about_count: 5784,
+description: "Apple Inc. is an American multinational corporation headquartered ...
+has_added_app: false,
+can_post: false,
+location: {
+city: "Cupertino",
+zip: "95014",
+country: "United States",
+longitude: -122.03065555422,
+state: "CA",
+street: "1 Infinite Loop",
+latitude: 37.33158849705
+},
+name: "Apple Inc.",
+phone: "(408) 996-1010",
+link: "https://www.facebook.com/pages/Apple-Inc/105596369475033",
+likes: 9191836,
+parking: {
+street: 0,
+lot: 0,
+valet: 0
+},
+is_community_page: true,
+were_here_count: 169646,
+checkins: 169646,
+id: "105596369475033",
+is_published: true
+}
+```
+
+Here is a sample of the scraped twitter data that will be returned by the url above:
+
+```json
+
+{
+    "2015-04-04": [
+        "
+The iPhone is clearly the world's preferred tech luxury item. $AAPL unbeatable in #China: http://www.forbes.com/sites/kenrapoza/2015/04/04/apple-takes-bigger-bite-of-xiaomis-smartphone-market-in-china/\u00a0\u2026
+
+",
+        "
+New Apple Store front display for Apple Watch, new gold model details revealed http://dlvr.it/9Fm521\u00a0 #9to5Mac $AAPL pic.twitter.com/gjM8LvzHwg
+
+",
+        "
+Logging in now to live stock chat http://www.optionmillionaires.com/\u00a0 $GOOG $AAPL $FB $EBAY #options #stocks #daytrading pic.twitter.com/GhY3dvPtzo
+",
+        "
+Apple Watch In-Store Reservations Available Beginning April 10: Apple on Friday updated its online store... http://bit.ly/1ETWGgq\u00a0 $AAPL
+",
+        "
+STRIKER9 PRO Binary Options System That Can Make Upto $201K Per Month Trading AAPL And GOOG! http://bit.ly/IfC4E1\u00a0\n#BinaryOptions
+",
+        "
+Why everyone should disregard a \"head & shoulders top\" $AAPL @SlopeOfHope http://slopeofhope.com/2012/12/apple-the-technical-picture-gets-uglier.html\u00a0\u2026
+",
+        "
+Hope I win this #iPad mini from @ValueWalk! $AAPL http://www.valuewalk.com\u00a0 http://lockerdo.me/5~psk\u00a0
+"
+    ]
+}
+```
 
 ### Visualizations
 

@@ -167,7 +167,7 @@ This might give us data for over a month.
 
 ## Similarly, we analyzed the tweets of @SAlphaAAPL.This is a specific twitter account for AAPL news##
 
-![Seeking_alpha]({{site.baseurl}}/images/seeking_alphaAAPL_correlates_volume.png)
+![Seeking_alpha]({{site.baseurl}}/images/SAlphaAAPL_apr23.png)
 
 ##AAPL stock Volume during this time ##
 

@@ -152,7 +152,7 @@ p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))
 p + geom_line()
 {% endhighlight %}
 
-## Plot of #Apple using @Yahoofinance ##
+## Sentimental Score Plot of "Apple" using @Yahoofinance ##
 
 ![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
@@ -161,7 +161,7 @@ p + geom_line()
 
 ![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
-##Why this trend ? ##
+##Why this trend ? /What we are After?  ##
 
 ![AAPL_selloutnews]({{site.baseurl}}/images/apple_sellout_news.png)
 
@@ -169,8 +169,12 @@ p + geom_line()
 
 ![SAAPL_watch_news]({{site.baseurl}}/images/SAAPL_sellout.png)
 
-The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.But if we want to get the data for a specific user account,we can get upto 3200 tweets.
-This might give us data for over a month.
+
+
+The limitation with twitter is we can get only past 8 days of data,using the searchTwitter function.
+
+But if we want to get the data for a specific user account,we can get upto 3200 tweets.This might give us data for over a month.
+
 
 
 ## Similarly, we analyzed the tweets of @SAlphaAAPL from March 18,2015 - April 23,2015 .This is a specific twitter account for AAPL news##
@@ -178,6 +182,8 @@ This might give us data for over a month.
 An example ...
 
 ![Seeking_alpha]({{site.baseurl}}/images/SAAPL_screenshot.png)
+
+Sentimental Score Plot of "Apple" from account @SAlphaAAPL 
 
 ![Seeking_alpha]({{site.baseurl}}/images/SAlphaAAPL_apr23.png)
 

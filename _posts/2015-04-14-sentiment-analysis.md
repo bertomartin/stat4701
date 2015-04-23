@@ -270,9 +270,6 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 -Grab headlines/description from the news.
 
--Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data.
-
--Use the data collected from the past to predict a signal for the future.
 
 R package tm.plugin.webmining gives you access to the news.But we have to build(update) our corpus of documents everyday.
 
@@ -284,3 +281,12 @@ R package tm.plugin.webmining gives you access to the news.But we have to build(
     yahooinplay <- WebCorpus(YahooInplaySource())
     yahoonews <- WebCorpus(YahooNewsSource("Microsoft"))
 
+###Methods for Analyzing News###
+
+-Headlines score vs Stock Price/Volume ?
+-Description score vs Stock Price/Volume ?
+
+
+-Aggregate with twitter Data(@yahoofinance and @SAlphaAAPL) and Google Trends Data.
+
+-Use the data collected from the past to predict a signal for the future.

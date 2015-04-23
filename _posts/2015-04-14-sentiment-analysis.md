@@ -26,9 +26,14 @@ title: Sentiment Analysis
 ![twitter mood predicts stock market]({{site.baseurl}}/images/twittermood.png)
 
 
+
 ## Using News to Predict trends ##
 
+
+
 ![uk oil co]({{site.baseurl}}/images/uk_oil.png)
+
+
 
 ![twitter stock rises]({{site.baseurl}}/images/google_twitter.png)
 
@@ -36,12 +41,14 @@ title: Sentiment Analysis
 
 ##Resources for Analysis##
 
+
 * Twitter - @Yahoonews,@googlenews,@Yahoofinance,@ftfinancialtimes,@cnnmoney,@cnbcfastmoney,#Apple,$AAPL
 * Google trends
 * Yahoo News,Google News, Yahoo Finance, Seeking Alpha
 
-
+{% highlight r %}
 ##Libraries used##
+
 library(tm)
 
 library(tm.plugin.webmining)
@@ -78,7 +85,16 @@ apple_yahoonewstext = sapply(apple_yahoonewstweets_apr21, function(x) x$getText(
 ## Clean the data ##
 apple_yahoonewstext=str_replace_all(apple_yahoonewstext_apr21,"[^[:graph:]]", " ")
 
- ##Calculate the Sentiment Score##
+#Use the searchterm to filter
+
+searchTerm="Apple"
+
+#filter for Apple news
+
+apple_yahoonewstext_apr=unique(apple_yahoonewstext_apr20[grepl(searchTerm,apple_yahoonewstext_apr)])
+
+
+ ## Calculate the Sentiment Score ##
  
  scoreCorpus <- function(text, pos, neg) {
   corpus <- Corpus(VectorSource(text)) 
@@ -119,7 +135,9 @@ apple_yahoonewstext=str_replace_all(apple_yahoonewstext_apr21,"[^[:graph:]]", " 
 
 
 ##List of positive Worrds and negative words ##
+
 hu.liu.pos = scan('~/Documents/STAT4701/sentimentanalysis/opinion-lexicon-English/positive_words.txt', what='character', comment.char=';')
+
 hu.liu.neg = scan('~/Documents/STAT4701/sentimentanalysis/opinion-lexicon-English/negative_words.txt', what='character', comment.char=';')
 
 
@@ -132,13 +150,14 @@ score_apple=scoreCorpus(apple_yahoonewstext,hu.liu.pos,hu.liu.neg)
 
 p=ggplot(scores_dat,aes(x=dates,y=scores,group=1))  
 p + geom_line()
+{% endhighlight %}
 
-
+## Plot of #Apple using @Yahoofinance ##
 
 ![yahoo_finance]({{site.baseurl}}/images/yahoofinance_apr21.png)
 
 
-## lets see the AAPL stock during this time ##
+## lets see the AAPL stock price during this time ##
 
 ![AAPL_yahoofinance]({{site.baseurl}}/images/AAPL_yahoofinance.png)
 
@@ -146,7 +165,7 @@ The limitation with twitter is we can get only past 8 days of data,using the sea
 This might give us data for over a month.
 
 
-## Similarly, we analyzed the tweets of @SAlphaAAPL##
+## Similarly, we analyzed the tweets of @SAlphaAAPL.This is a specific twitter account for AAPL news##
 
 ![Seeking_alpha]({{site.baseurl}}/images/seeking_alphaAAPL_correlates_volume.png)
 
@@ -155,9 +174,11 @@ This might give us data for over a month.
 ![Seeking_alpha]({{site.baseurl}}/images/AAPL_stock_seekingalpha.png)
 
 
+
+
 ## Predicting Stock Market trends using Google Trends Data ##
 
-Google Trends gives us interest score on a scale of 1 - 100 through Google Searches.Below is data for the term AAPL for year 2015.
+Google Trends gives us interest score on a scale of 1 - 100 through Google Searches.Below is data for the term AAPL for year Jan to April 2015.
 
 Week | AAPL Score
 -----| -----
@@ -178,10 +199,13 @@ Week | AAPL Score
 04/12/15|	36
 04/19/15|	32
 
+##AAPL Gtrends score Jan - April 2015##
+
 ![gtrends_2015]({{site.baseurl}}/images/gtrends_2015.png)
 
 
-And the AAPL Stock volume for the same period
+
+##And the AAPL Stock volume for the same period##
 
 ![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2015.png)
 
@@ -190,13 +214,25 @@ We can clearly see a correlation between the AAPL stock volume and the google tr
 
 
 
-##AAPL stock volume vs AAPL score(Google trends) - 2014 ##
+##AAPL score(Google trends) vs AAPL stock volume  - 2014 ##
 
 
-![gtrends_2015]({{site.baseurl}}/images/gtrends_2014.png)
+![gtrends_2015]({{site.baseurl}}/images/AAPL_gtrends_2014.png)
 
 ![AAPLstock_gtrends_2015]({{site.baseurl}}/images/AAPL_stock_for_gtrends2014.png)
 
 
 
+## AMZN score (Google trends) vs AMZN stock volume   -2014 ##
+
+![gtrends_2014]({{site.baseurl}}/images/gtrends_AMZN_2014.png)
+
+
+![Amazon_stock_2014]({{site.baseurl}}/images/Amazon_stock_2014.png)
+
+
+
+## Maybe More ... Predicting Sales ?? Samsung Galaxy S5 vs Iphone 6 Plus  ##
+
+![Iphone_samsung]({{site.baseurl}}/images/iphone_samsung_gtrends.png)
 

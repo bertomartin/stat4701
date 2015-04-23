@@ -284,6 +284,7 @@ R package tm.plugin.webmining gives you access to the news.But we have to build(
 ###Methods for Analyzing News###
 
 -Headlines score vs Stock Price/Volume ?
+
 -Description score vs Stock Price/Volume ?
 
 

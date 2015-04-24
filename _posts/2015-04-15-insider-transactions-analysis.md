@@ -17,6 +17,7 @@ There are of course many aspects to each insider's transaction that can make ana
 All reported insider trading activity is available on the SEC website in XBRL (eXtensible Business Reporting Language) - the XML-based standard for financial reporting. Lists of desired filings and their respective URLs can be obtained as RSS feeds from the SEC website, and the XBRL data can be parsed and loaded into R using the XBRL and/or XML packages. 
 
 The relevant data we we wish to analyze are found in SEC Form 4, filed by an insider within 2 business days of a transection. The fields we shall extract from these forms are:
+
 - Beneficial Owner (identity of each unique insider
 - Type of insider (Officer, director, >10% owner)
 - Price

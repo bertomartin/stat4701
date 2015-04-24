@@ -25,7 +25,7 @@ The relevant data we we wish to analyze are found in SEC Form 4, filed by an ins
 - Transaction Code
     - buy/sell
     - open market / grant / option exercise
-- # shares bought or sold in transaction
+- shares bought or sold in transaction
 - Total shares owned post-transaction
 
 We will not be using all of these data points in our initial analysis, but will import them nevertheless to facilitate anyone's interest in using alternative means to infer whether an insider's transaction seems good, bad or neutral. An additional external data point that might be of interest in that endeavor might be the age of each officer and director (found in the company's annual report) in order to gauge their investing time-horizon and propensity to weight their portfolio towards cash.
